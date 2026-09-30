@@ -87,17 +87,17 @@ export default function Gallery() {
   };
 
   return (
-    <section id="gallery" className="py-20 bg-gray-50/60 overflow-hidden">
+    <section id="gallery" className="py-12 sm:py-16 lg:py-20 bg-gray-50/60 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Patients Gallery</h2>
+        <div className="text-center mb-10 sm:mb-12">
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Patients Gallery</h2>
         </div>
 
         {/* Carousel Container */}
         <div
-          className="relative group"
+          className="relative group select-none"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
@@ -115,7 +115,7 @@ export default function Gallery() {
                   className="flex-shrink-0 px-2 sm:px-3"
                   style={{ width: `${100 / itemsPerView}%` }}
                 >
-                  <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                  <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-gray-100">
                     <img
                       src={item.image}
                       alt={item.alt}
@@ -132,7 +132,7 @@ export default function Gallery() {
             type="button"
             onClick={prevSlide}
             aria-label="Previous Slide"
-            className="absolute left-2 sm:-left-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white/90 text-gray-800 shadow-lg border border-gray-100 flex items-center justify-center text-xl font-bold transition-all hover:bg-blue-600 hover:text-white hover:scale-110 focus:outline-none"
+            className="absolute left-1 sm:left-2 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white/90 text-gray-800 shadow-lg border border-gray-100 flex items-center justify-center text-lg sm:text-xl font-bold transition-all hover:bg-blue-600 hover:text-white hover:scale-110 focus:outline-none"
           >
             ‹
           </button>
@@ -142,23 +142,23 @@ export default function Gallery() {
             type="button"
             onClick={nextSlide}
             aria-label="Next Slide"
-            className="absolute right-2 sm:-right-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white/90 text-gray-800 shadow-lg border border-gray-100 flex items-center justify-center text-xl font-bold transition-all hover:bg-blue-600 hover:text-white hover:scale-110 focus:outline-none"
+            className="absolute right-1 sm:right-2 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white/90 text-gray-800 shadow-lg border border-gray-100 flex items-center justify-center text-lg sm:text-xl font-bold transition-all hover:bg-blue-600 hover:text-white hover:scale-110 focus:outline-none"
           >
             ›
           </button>
 
           {/* Pagination Dots */}
-          <div className="flex justify-center items-center gap-2 mt-8">
+          <div className="flex justify-center items-center gap-1.5 sm:gap-2 mt-6 sm:mt-8">
             {Array.from({ length: maxIndex + 1 }).map((_, idx) => (
               <button
                 key={idx}
                 type="button"
                 onClick={() => setCurrentIndex(idx)}
                 aria-label={`Go to slide ${idx + 1}`}
-                className={`h-2.5 rounded-full transition-all duration-300 ${
+                className={`h-2 sm:h-2.5 rounded-full transition-all duration-300 ${
                   currentIndex === idx
-                    ? 'w-8 bg-blue-600'
-                    : 'w-2.5 bg-gray-300 hover:bg-gray-400'
+                    ? 'w-7 sm:w-8 bg-blue-600'
+                    : 'w-2 sm:w-2.5 bg-gray-300 hover:bg-gray-400'
                 }`}
               />
             ))}
@@ -169,3 +169,4 @@ export default function Gallery() {
     </section>
   );
 }
+

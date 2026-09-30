@@ -31,9 +31,6 @@ const faqs = [
     question: 'DOES AJMedicals PROVIDE ACCOMMODATION?',
     answer: 'Yes, Depending on your budget, we can arrange accommodation for you and your attendant close to the hospital at nearby guest houses, service apartments, or luxurious 5-star hotels. Price range starting from $20 per day.'
   },
-
-
- 
 ];
 
 export default function FAQ() {
@@ -44,28 +41,29 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="py-20 bg-white">
+    <section id="faq" className="py-12 sm:py-16 lg:py-20 bg-white">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">FREQUENTLY ASKED QUESTION</h2>
+        <div className="text-center mb-10 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">FREQUENTLY ASKED QUESTION</h2>
         </div>
 
         <div className="space-y-4">
           {faqs.map((faq, index) => (
             <div key={index} className="border border-gray-200 rounded-lg overflow-hidden">
               <button
+                type="button"
                 onClick={() => toggleFAQ(index)}
-                className="w-full px-6 py-4 text-left font-semibold text-gray-900 hover:bg-gray-50 transition flex justify-between items-center"
+                className="w-full px-4 sm:px-6 py-4 text-left font-semibold text-gray-900 hover:bg-gray-50 transition flex justify-between items-center gap-3"
               >
-                <span>{faq.question}</span>
-                <span className={`transform transition ${openIndex === index ? 'rotate-180' : ''}`}>
+                <span className="text-sm sm:text-base leading-snug">{faq.question}</span>
+                <span className={`transform transition flex-shrink-0 text-xs sm:text-sm ${openIndex === index ? 'rotate-180' : ''}`}>
                   ▼
                 </span>
               </button>
 
               {openIndex === index && (
-                <div className="px-6 py-4 bg-gray-50 border-t border-gray-200">
-                  <p className="text-gray-600 leading-relaxed text-sm sm:text-base">{faq.answer}</p>
+                <div className="px-4 sm:px-6 py-4 bg-gray-50 border-t border-gray-200">
+                  <p className="text-gray-600 leading-relaxed text-xs sm:text-sm md:text-base">{faq.answer}</p>
                 </div>
               )}
             </div>
@@ -75,5 +73,6 @@ export default function FAQ() {
     </section>
   );
 }
+
 
 

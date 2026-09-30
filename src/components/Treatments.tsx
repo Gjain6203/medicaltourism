@@ -43,16 +43,16 @@ const treatments = [
 
 export default function Treatments() {
   return (
-    <section id="treatments" className="py-20 bg-gray-50/50">
+    <section id="treatments" className="py-12 sm:py-16 lg:py-20 bg-gray-50/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16 max-w-3xl mx-auto">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4 tracking-tight">OUR TOP TREATMENTS</h2>
-          <p className="text-lg text-gray-600 leading-relaxed">
+        <div className="text-center mb-10 sm:mb-16 max-w-3xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 tracking-tight">OUR TOP TREATMENTS</h2>
+          <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
             AJ MEDICAL TOURISM helps you to choose the best hospitals, best doctors, and best treatment plans at an affordable cost. Our company's goal is to have satisfied and happy medical tourists.
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {treatments.map((treatment, index) => (
             <div
               key={index}
@@ -84,5 +84,6 @@ export default function Treatments() {
     </section>
   );
 }
+
 
 

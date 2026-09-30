@@ -43,18 +43,18 @@ const steps = [
 
 export default function Process() {
   return (
-    <section id="process" className="py-20 bg-gray-50/60">
+    <section id="process" className="py-12 sm:py-16 lg:py-20 bg-gray-50/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16 max-w-3xl mx-auto">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4 tracking-tight">Understanding the Process</h2>
-          <p className="text-lg text-gray-600 leading-relaxed">
+        <div className="text-center mb-10 sm:mb-16 max-w-3xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 tracking-tight">Understanding the Process</h2>
+          <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
             This is the whole pipeline of the process that works to help you. We’ve got you covered by every possible means and reveal out a completely transparent journey.
           </p>
         </div>
 
         {/* Process Cards Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {steps.map((step, index) => (
             <div
               key={index}
@@ -64,19 +64,18 @@ export default function Process() {
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-blue-700 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
 
               {/* Card Header with Step Number & Tag */}
-              <div className="flex items-center justify-between mb-5">
-                <div className="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 font-bold text-lg flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300 shadow-sm">
+              <div className="flex items-center justify-between mb-4 sm:mb-5">
+                <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-blue-50 text-blue-600 font-bold text-base sm:text-lg flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300 shadow-sm">
                   {step.number.padStart(2, '0')}
                 </div>
-               
               </div>
 
               {/* Card Body */}
               <div className="flex flex-col flex-grow">
-                <h3 className="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors mb-2.5">
+                <h3 className="text-base sm:text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors mb-2.5">
                   {step.title}
                 </h3>
-                <p className="text-gray-600 text-sm leading-relaxed flex-grow">
+                <p className="text-gray-600 text-xs sm:text-sm leading-relaxed flex-grow">
                   {step.description}
                 </p>
               </div>
@@ -87,5 +86,6 @@ export default function Process() {
     </section>
   );
 }
+
 
 

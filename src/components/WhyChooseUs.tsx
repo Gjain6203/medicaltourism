@@ -23,47 +23,44 @@ const reasons = [
 
 export default function WhyChooseUs() {
   return (
-    <section id="why-choose-us" className="py-20 bg-white">
+    <section id="why-choose-us" className="py-12 sm:py-16 lg:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-          {/* Doctor Network Banner */}
-        <div className="mb-10 bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-800 text-white p-8 sm:p-12 rounded-2xl text-center shadow-xl relative overflow-hidden">
+        {/* Doctor Network Banner */}
+        <div className="mb-10 sm:mb-14 bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-800 text-white p-6 sm:p-10 md:p-12 rounded-2xl text-center shadow-xl relative overflow-hidden">
           <div className="relative z-10">
-            <h3 className="text-2xl sm:text-3xl font-bold mb-4">
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 sm:mb-4">
               100+ Expert Doctors Across Top Hospitals In India
             </h3>
-            <p className="text-lg text-blue-100 max-w-3xl mx-auto mb-8 leading-relaxed">
+            <p className="text-sm sm:text-base lg:text-lg text-blue-100 max-w-3xl mx-auto mb-6 sm:mb-8 leading-relaxed">
 “We are the medical service provider to assist you in your complete medical journey of any kind.
             </p>
             <a
-              href="#contact"
-              className="inline-block bg-white text-blue-600 px-8 py-3.5 rounded-xl font-bold hover:bg-blue-50 transition-all shadow-md hover:shadow-lg hover:scale-105 active:scale-95"
+              href="/contact"
+              className="inline-block bg-white text-blue-600 px-6 sm:px-8 py-3 sm:py-3.5 rounded-xl font-bold hover:bg-blue-50 transition-all shadow-md hover:shadow-lg hover:scale-105 active:scale-95 text-sm sm:text-base"
             >
               Contact Us 
             </a>
           </div>
         </div>
 
-
-
         {/* Section Header */}
-        <div className="text-center mb-16 max-w-3xl mx-auto">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4 tracking-tight">WHY CHOOSE US?</h2>
-         
+        <div className="text-center mb-10 sm:mb-16 max-w-3xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 tracking-tight">WHY CHOOSE US?</h2>
         </div>
 
         {/* Reason Cards Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {reasons.map((reason, index) => (
             <div
               key={index}
-              className="group relative bg-white rounded-2xl p-7 border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col hover:-translate-y-1.5 overflow-hidden"
+              className="group relative bg-white rounded-2xl p-6 sm:p-7 border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col hover:-translate-y-1.5 overflow-hidden"
             >
               {/* Top Accent Line on hover */}
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-indigo-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
 
               {/* Icon Container */}
-              <div className="w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center text-3xl mb-6 group-hover:bg-blue-600 group-hover:scale-110 transition-all duration-300 shadow-sm">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-blue-50 flex items-center justify-center text-2xl sm:text-3xl mb-5 sm:mb-6 group-hover:bg-blue-600 group-hover:scale-110 transition-all duration-300 shadow-sm">
                 <span className="transition-transform duration-300 group-hover:scale-110">
                   {reason.icon}
                 </span>
@@ -71,10 +68,10 @@ export default function WhyChooseUs() {
 
               {/* Card Body */}
               <div className="flex flex-col flex-grow">
-                <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors mb-3">
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors mb-2.5 sm:mb-3">
                   {reason.title}
                 </h3>
-                <p className="text-gray-600 text-sm leading-relaxed flex-grow">
+                <p className="text-gray-600 text-xs sm:text-sm leading-relaxed flex-grow">
                   {reason.description}
                 </p>
               </div>
@@ -82,10 +79,10 @@ export default function WhyChooseUs() {
           ))}
         </div>
 
-      
       </div>
     </section>
   );
 }
+
 
 

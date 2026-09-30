@@ -39,40 +39,39 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 bg-gray-50">
+    <section id="contact" className="py-12 sm:py-16 lg:py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
           {/* Contact Information */}
           <div>
-            <h2 className="text-4xl font-bold text-gray-900 mb-8">Get In Touch</h2>
-            <div className="space-y-8">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6 sm:mb-8">Get In Touch</h2>
+            <div className="space-y-6 sm:space-y-8">
               <div className="flex items-start">
-                <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white text-xl mr-6 flex-shrink-0 font-bold">
+                <div className="w-11 h-11 sm:w-12 sm:h-12 bg-blue-600 rounded-full flex items-center justify-center text-white text-lg sm:text-xl mr-4 sm:mr-6 flex-shrink-0 font-bold">
                   📞
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-900 mb-2 text-lg">Phone</h4>
+                  <h4 className="font-semibold text-gray-900 mb-1 sm:mb-2 text-base sm:text-lg">Phone</h4>
                   <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
                     <a
                       href="tel:+919654250311"
-                      className="text-gray-600 font-medium hover:text-blue-600 transition-colors"
+                      className="text-gray-600 font-medium hover:text-blue-600 transition-colors text-sm sm:text-base"
                     >
                       +91 9654250311
                     </a>
-                   
                   </div>
                 </div>
               </div>
 
               <div className="flex items-start">
-                <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white text-xl mr-6 flex-shrink-0 font-bold">
+                <div className="w-11 h-11 sm:w-12 sm:h-12 bg-blue-600 rounded-full flex items-center justify-center text-white text-lg sm:text-xl mr-4 sm:mr-6 flex-shrink-0 font-bold">
                   ✉️
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-900 mb-2 text-lg">Email</h4>
+                  <h4 className="font-semibold text-gray-900 mb-1 sm:mb-2 text-base sm:text-lg">Email</h4>
                   <a
                     href="mailto:info@ajmedicaltourism.com"
-                    className="text-gray-600 hover:text-blue-600 transition-colors"
+                    className="text-gray-600 hover:text-blue-600 transition-colors text-sm sm:text-base break-all"
                   >
                     info@ajmedicaltourism.com
                   </a>
@@ -80,26 +79,26 @@ export default function Contact() {
               </div>
 
               <div className="flex items-start">
-                <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white text-xl mr-6 flex-shrink-0 font-bold">
+                <div className="w-11 h-11 sm:w-12 sm:h-12 bg-blue-600 rounded-full flex items-center justify-center text-white text-lg sm:text-xl mr-4 sm:mr-6 flex-shrink-0 font-bold">
                   📍
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-900 mb-2 text-lg">Address</h4>
-                  <a
-                    className="text-gray-600 hover:text-blue-600 transition-colors leading-relaxed block group"
+                  <h4 className="font-semibold text-gray-900 mb-1 sm:mb-2 text-base sm:text-lg">Address</h4>
+                  <div
+                    className="text-gray-600 hover:text-blue-600 transition-colors leading-relaxed block text-sm sm:text-base"
                   >
                     37, South, Pocket 1, Jasola<br />
                     New Delhi, Delhi 110025<br />
                     India
-                  </a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Contact Form */}
-          <div className="bg-white p-8 rounded-lg shadow">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">Send us a Message</h3>
+          <div className="bg-white p-5 sm:p-8 rounded-lg shadow">
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">Send us a Message</h3>
 
             {submitted && (
               <div className="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg text-sm">
@@ -109,7 +108,7 @@ export default function Contact() {
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label className="block text-gray-700 font-medium mb-2 text-sm">Full Name *</label>
+                <label className="block text-gray-700 font-medium mb-1.5 sm:mb-2 text-sm">Full Name *</label>
                 <input
                   type="text"
                   name="name"
@@ -122,7 +121,7 @@ export default function Contact() {
               </div>
 
               <div>
-                <label className="block text-gray-700 font-medium mb-2 text-sm">Email *</label>
+                <label className="block text-gray-700 font-medium mb-1.5 sm:mb-2 text-sm">Email *</label>
                 <input
                   type="email"
                   name="email"
@@ -135,7 +134,7 @@ export default function Contact() {
               </div>
 
               <div>
-                <label className="block text-gray-700 font-medium mb-2 text-sm">Phone / WhatsApp *</label>
+                <label className="block text-gray-700 font-medium mb-1.5 sm:mb-2 text-sm">Phone / WhatsApp *</label>
                 <input
                   type="tel"
                   name="phone"
@@ -148,7 +147,7 @@ export default function Contact() {
               </div>
 
               <div>
-                <label className="block text-gray-700 font-medium mb-2 text-sm">Country *</label>
+                <label className="block text-gray-700 font-medium mb-1.5 sm:mb-2 text-sm">Country *</label>
                 <input
                   type="text"
                   name="country"
@@ -161,7 +160,7 @@ export default function Contact() {
               </div>
 
               <div>
-                <label className="block text-gray-700 font-medium mb-2 text-sm">Treatment Interested In</label>
+                <label className="block text-gray-700 font-medium mb-1.5 sm:mb-2 text-sm">Treatment Interested In</label>
                 <select
                   name="treatment"
                   value={formData.treatment}
@@ -181,7 +180,7 @@ export default function Contact() {
               </div>
 
               <div>
-                <label className="block text-gray-700 font-medium mb-2 text-sm">Message / Symptoms</label>
+                <label className="block text-gray-700 font-medium mb-1.5 sm:mb-2 text-sm">Message / Symptoms</label>
                 <textarea
                   name="message"
                   value={formData.message}
@@ -194,7 +193,7 @@ export default function Contact() {
 
               <button
                 type="submit"
-                className="w-full bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition shadow"
+                className="w-full bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition shadow text-sm sm:text-base cursor-pointer"
               >
                 Send Message & Get Quote
               </button>
@@ -205,5 +204,6 @@ export default function Contact() {
     </section>
   );
 }
+
 
 

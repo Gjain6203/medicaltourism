@@ -18,7 +18,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>RUHM Medical Tourism India | World-Class Healthcare & Affordable Surgeries</title>
+        <title> Medical Tourism India | World-Class Healthcare & Affordable Surgeries</title>
         <meta
           name="description"
           content="Find the best medical treatment and super-specialist surgeons in India. Save up to 70-80% on Heart, Spine, Orthopedic, Cancer and Transplant surgeries with JCI accredited hospitals."

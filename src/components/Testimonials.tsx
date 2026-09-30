@@ -23,16 +23,16 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="py-20 bg-gray-50/60">
+    <section id="testimonials" className="py-12 sm:py-16 lg:py-20 bg-gray-50/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center mb-16 max-w-3xl mx-auto">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4 tracking-tight">Patient Testimonials</h2>
+        <div className="text-center mb-10 sm:mb-16 max-w-3xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 tracking-tight">Patient Testimonials</h2>
         </div>
 
         {/* Testimonials Cards Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
@@ -44,18 +44,12 @@ export default function Testimonials() {
               <div>
                 {/* Top: Image & Patient Details */}
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="relative w-20 h-20 rounded-full overflow-hidden bg-blue-50 border-2 border-blue-100 flex-shrink-0 shadow-sm group-hover:border-blue-500 transition-colors">
-                    {testimonial.image.startsWith('http') || testimonial.image.startsWith('/') ? (
-                      <img
-                        src={testimonial.image}
-                        alt={testimonial.name}
-                        className="w-full h-full object-cover"
-                      />
-                    ) : (
-                      <span className="text-3xl flex items-center justify-center w-full h-full">
-                        {testimonial.image}
-                      </span>
-                    )}
+                  <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden bg-blue-50 border-2 border-blue-100 flex-shrink-0 shadow-sm group-hover:border-blue-500 transition-colors">
+                    <img
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <div>
                     <h4 className="font-bold text-gray-900 text-base group-hover:text-blue-600 transition-colors leading-tight">
@@ -64,15 +58,12 @@ export default function Testimonials() {
                   </div>
                 </div>
 
-        
-
                 {/* Message Content */}
-                <p className="text-gray-600 text-sm leading-relaxed italic">
+                <p className="text-gray-600 text-xs sm:text-sm leading-relaxed italic">
                   "{testimonial.text}"
                 </p>
               </div>
 
-             
             </div>
           ))}
         </div>
@@ -81,5 +72,6 @@ export default function Testimonials() {
     </section>
   );
 }
+
 
 

@@ -1,3 +1,6 @@
+import Image from "next/image";
+import Link from "next/link";
+
 const treatments = [
   {
     icon: '/images/home_Cardiac.jpeg',
@@ -22,7 +25,7 @@ const treatments = [
   {
     icon: '/images/home_lung.jfif',
     title: 'LUNG TRANSPLANT',
-    description: 'A lung transplant is a complex and life-saving surgical procedure where a diseased lung is replaced with a healthy one from a donor. '
+    description: 'A lung transplant is a complex and life-saving surgical procedure where a diseased lung is replaced with a healthy one from a donor.'
   },
   {
     icon: '/images/home_gastroenterology.jpg',
@@ -43,47 +46,80 @@ const treatments = [
 
 export default function Treatments() {
   return (
-    <section id="treatments" className="py-12 sm:py-16 lg:py-20 bg-gray-50/50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-10 sm:mb-16 max-w-3xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 tracking-tight">OUR TOP TREATMENTS</h2>
-          <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
-            AJ MEDICAL TOURISM helps you to choose the best hospitals, best doctors, and best treatment plans at an affordable cost. Our company's goal is to have satisfied and happy medical tourists.
+    <section id="treatments" className="py-16 sm:py-24 bg-white relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        {/* Section Header */}
+        <div className="mb-10 sm:mb-12">
+          <span className="text-xs font-bold text-blue-600 tracking-widest uppercase block mb-3">
+            OUR SPECIALTIES
+          </span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-950 tracking-tight mb-3">
+            OUR TOP TREATMENTS
+          </h2>
+          <p className="text-slate-600 text-sm sm:text-base lg:text-lg max-w-3xl leading-relaxed font-normal">
+            AJ MEDICAL TOURISM helps you to choose the best hospitals, best doctors, and best treatment plans at an affordable cost. Our company goal is to have satisfied and happy medical tourists.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+        {/* Treatment Cards Grid with Original Images and Modern Clean UI */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {treatments.map((treatment, index) => (
             <div
               key={index}
-              className="group bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col hover:-translate-y-1.5"
+              className="group bg-white rounded-3xl overflow-hidden border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-slate-300 transition-all duration-300 flex flex-col hover:-translate-y-1"
             >
               {/* Card Image */}
-              <div className="relative h-48 w-full overflow-hidden bg-gray-100">
-                <img
+              <div className="relative h-48 sm:h-52 w-full overflow-hidden bg-slate-100">
+                <Image
                   src={treatment.icon}
                   alt={treatment.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 ease-out"
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
+                <span className="absolute top-3.5 right-3.5 bg-white/90 backdrop-blur-md text-slate-800 text-[11px] font-bold px-2.5 py-1 rounded-full shadow-xs border border-white/50">
+                  Super Speciality
+                </span>
               </div>
 
-              {/* Card Content */}
-              <div className="p-5 flex flex-col flex-grow">
-                <h3 className="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors mb-2 line-clamp-1">
-                  {treatment.title}
-                </h3>
-                <p className="text-gray-600 text-sm leading-relaxed mb-4 flex-grow">
-                  {treatment.description}
-                </p>
+              {/* Card Body */}
+              <div className="p-6 flex flex-col flex-grow justify-between">
+                <div>
+                  <h3 className="text-base sm:text-lg font-bold text-slate-950 group-hover:text-blue-600 transition-colors mb-2">
+                    {treatment.title}
+                  </h3>
+                  <p className="text-slate-600 text-xs sm:text-sm leading-relaxed line-clamp-3 mb-4">
+                    {treatment.description}
+                  </p>
+                </div>
+
+                {/* Card Action Link */}
+                <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
+                  <Link
+                    href="/contact"
+                    className="text-xs sm:text-sm font-bold text-blue-600 hover:text-blue-700 inline-flex items-center gap-1.5 group/link"
+                  >
+                    <span>Free Consultation</span>
+                    <span className="group-hover/link:translate-x-1 transition-transform">→</span>
+                  </Link>
+                  <span className="w-7 h-7 rounded-full bg-slate-50 text-blue-600 flex items-center justify-center text-xs group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                    +
+                  </span>
+                </div>
               </div>
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );
 }
+
+
+
 
 
 

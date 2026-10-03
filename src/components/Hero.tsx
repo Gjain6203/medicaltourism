@@ -1,146 +1,213 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useState } from "react";
 
-const slides = [
-  {
-    image: "/images/home_hero1.webp",
-    title: "Welcome to AJ Medical Tourism",
-    subtitle: "India's Top Specialised Medical Professionals, and Hospitals.",
-    primaryBtnText: "Click Here",
-    primaryBtnLink: "/contact",
-  },
-  {
-    image: "/images/home_hero2.png",
-    title: "India's Top Specialised Medical Professionals",
-    subtitle: "Are you looking for the best spine surgeon and spine  specialist hospital in India?",
-    primaryBtnText: "Click Here",
-    primaryBtnLink: "/contact",
-  },
-  {
-    image: "/images/home_hero3.webp",
-    title: "World Class Medical Facilities",
-    subtitle: "Start your Journey to Good Health with AJ Medical Tourism.",
-    primaryBtnText: "Click Here",
-    primaryBtnLink: "/contact",
-  },
+const specialtiesTicker = [
+  "Nephrology",
+  "Brain & Spine",
+  "Lung Transplant",
+  "Urology Surgery",
+  "Cardiac Surgery",
+  "Gastroenterology",
+  "Orthopaedic & Joint",
+  "Cancer Care"
 ];
 
 export default function Hero() {
-  const [activeSlide, setActiveSlide] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
+  const [activeStep, setActiveStep] = useState(1);
 
-  // Auto slide with pause support
-  useEffect(() => {
-    if (isPaused) return;
-
-    const interval = setInterval(() => {
-      setActiveSlide((prev) => (prev + 1) % slides.length);
-    }, 5500);
-
-    return () => clearInterval(interval);
-  }, [isPaused]);
-
-  const prevSlide = () => {
-    setActiveSlide((prev) => (prev - 1 + slides.length) % slides.length);
-  };
-
-  const nextSlide = () => {
-    setActiveSlide((prev) => (prev + 1) % slides.length);
-  };
+  // Triple the array for seamless infinite marquee loop
+  const marqueeItems = [...specialtiesTicker, ...specialtiesTicker, ...specialtiesTicker];
 
   return (
-    <div
-      className="relative h-[550px] sm:h-[620px] lg:h-[680px] w-full overflow-hidden bg-slate-950"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-    >
-      {/* Slides */}
-      {slides.map((slide, index) => (
-        <div
-          key={index}
-          className={`absolute inset-0 h-full w-full transition-opacity duration-1000 ease-in-out ${
-            index === activeSlide
-              ? "z-10 opacity-100"
-              : "z-0 opacity-0 pointer-events-none"
-          }`}
-        >
-          {/* Background Image */}
-          <img
-            src={slide.image}
-            alt={slide.title}
-            className="h-full w-full object-cover object-center transform scale-105 transition-transform duration-7000 ease-out"
-          />
+    <section className="relative pt-28 sm:pt-36 lg:pt-40 pb-12 sm:pb-16 bg-white overflow-hidden">
+      {/* Background Subtle Gradient Glows */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-full pointer-events-none overflow-hidden">
+        <div className="absolute top-10 left-1/4 w-[500px] h-[500px] bg-blue-50/40 rounded-full blur-3xl" />
+        <div className="absolute top-40 right-10 w-[400px] h-[400px] bg-slate-50/80 rounded-full blur-2xl" />
+      </div>
 
-          {/* Modern Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/60 to-black/40 flex items-center justify-center">
-            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        {/* Main Hero Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          
+          {/* Left Hero Content (7 Cols) */}
+          <div className="lg:col-span-7 space-y-6 sm:space-y-7">
+            
+            {/* Pill Badge */}
+            <div>
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-50 border border-slate-200/90 text-slate-700 text-xs sm:text-sm font-medium shadow-xs">
+                <span>Welcome to AJ Medical Tourism</span>
+              </div>
+            </div>
+
+            {/* Main Headline */}
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-950 tracking-tight leading-[1.1]">
+              Heal in India with <br className="hidden sm:inline" />
+              by your side
+            </h1>
+
+            {/* Subtitle */}
+            <p className="text-base sm:text-lg lg:text-xl text-slate-600 max-w-xl leading-relaxed font-normal">
+              India&apos;s top specialized medical professionals and hospitals, with end-to-end help from inquiry to follow-up.
+            </p>
+
+            {/* CTA Action Buttons */}
+            <div className="flex flex-wrap items-center gap-3.5 sm:gap-4 pt-2">
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 bg-slate-950 hover:bg-slate-800 text-white font-bold px-7 sm:px-8 py-3.5 sm:py-4 rounded-2xl shadow-lg shadow-slate-950/10 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] text-sm sm:text-base"
+              >
+                <span>Get Free Quote</span>
+                <span className="text-base">→</span>
+              </Link>
               
-             
+          
+            </div>
 
-              {/* Title */}
-              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-5 leading-tight text-white drop-shadow-md">
-                {slide.title}
-              </h1>
+          </div>
 
-              {/* Subtitle */}
-              <p className="text-base sm:text-lg lg:text-xl text-gray-200 max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed drop-shadow">
-                {slide.subtitle}
-              </p>
+          {/* Right Hero Card: Journey in Progress (5 Cols) */}
+          <div className="lg:col-span-5">
+            <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-xl shadow-slate-200/40 relative overflow-hidden">
+              
+              {/* Header */}
+              <div className="mb-6 pb-4 border-b border-slate-100">
+                <span className="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-1">
+                  Your journey
+                </span>
+                <h3 className="text-xl sm:text-2xl font-black text-slate-950 tracking-tight">
+                  Treatment plan in progress
+                </h3>
+              </div>
 
-              {/* Action Buttons */}
-              <div className="flex flex-wrap items-center justify-center gap-4">
-                <Link
-                  href={slide.primaryBtnLink}
-                  className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-7 py-3.5 rounded-xl shadow-lg hover:shadow-blue-500/30 transition-all hover:scale-105 active:scale-95 inline-flex items-center gap-2 text-sm sm:text-base"
+              {/* Journey Steps List */}
+              <div className="space-y-3.5">
+                
+                {/* Step 1 */}
+                <div 
+                  onClick={() => setActiveStep(1)}
+                  className={`flex items-center justify-between p-3.5 sm:p-4 rounded-2xl border transition-all cursor-pointer ${
+                    activeStep === 1 
+                      ? 'bg-blue-50/60 border-blue-200 shadow-xs' 
+                      : 'bg-white border-slate-100 hover:border-slate-200 hover:bg-slate-50/50'
+                  }`}
                 >
-                  <span>{slide.primaryBtnText}</span>
-                </Link>
+                  <div className="flex items-center gap-3.5">
+                    <span className="text-2xl">📄</span>
+                    <span className="text-sm sm:text-base font-bold text-slate-900">
+                      Inquiry & reports received
+                    </span>
+                  </div>
+                  <span className="w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs font-bold">
+                    ✓
+                  </span>
+                </div>
 
-             
+                {/* Step 2 */}
+                <div 
+                  onClick={() => setActiveStep(2)}
+                  className={`flex items-center justify-between p-3.5 sm:p-4 rounded-2xl border transition-all cursor-pointer ${
+                    activeStep === 2 
+                      ? 'bg-blue-50/60 border-blue-200 shadow-xs' 
+                      : 'bg-white border-slate-100 hover:border-slate-200 hover:bg-slate-50/50'
+                  }`}
+                >
+                  <div className="flex items-center gap-3.5">
+                    <span className="text-2xl">🩺</span>
+                    <span className="text-sm sm:text-base font-bold text-slate-900">
+                      Specialist opinion & estimate
+                    </span>
+                  </div>
+                  <span className="w-2.5 h-2.5 rounded-full bg-blue-600 animate-ping mr-1.5" />
+                </div>
+
+                {/* Step 3 */}
+                <div 
+                  onClick={() => setActiveStep(3)}
+                  className={`flex items-center justify-between p-3.5 sm:p-4 rounded-2xl border transition-all cursor-pointer ${
+                    activeStep === 3 
+                      ? 'bg-blue-50/60 border-blue-200 shadow-xs' 
+                      : 'bg-white border-slate-100 hover:border-slate-200 hover:bg-slate-50/50'
+                  }`}
+                >
+                  <div className="flex items-center gap-3.5">
+                    <span className="text-2xl">✈️</span>
+                    <span className="text-sm sm:text-base font-bold text-slate-900">
+                      Visa, flight & airport pickup
+                    </span>
+                  </div>
+                  <span className="text-xs font-bold text-slate-400 bg-slate-100 px-2 py-0.5 rounded-full">
+                    Step 3
+                  </span>
+                </div>
+
               </div>
 
             </div>
           </div>
+
         </div>
-      ))}
 
-      {/* Navigation Arrows */}
-      <button
-        type="button"
-        onClick={prevSlide}
-        aria-label="Previous slide"
-        className="absolute left-3 sm:left-6 top-1/2 z-20 flex h-11 w-11 sm:h-12 sm:w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/20 hover:bg-white/40 text-2xl text-white backdrop-blur-md shadow-lg transition hover:scale-110 focus:outline-none"
-      >
-        ‹
-      </button>
+        {/* 3 Metric / Stats Cards Row */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mt-12 sm:mt-16 pt-8 border-t border-slate-100">
+          
+          {/* Stat 1 */}
+          <div className="bg-slate-50/60 hover:bg-white rounded-3xl p-6 sm:p-7 border border-slate-200/80 hover:border-blue-200 hover:shadow-lg transition-all">
+            <div className="text-4xl sm:text-5xl font-black text-slate-950 tracking-tight mb-2">
+              100
+            </div>
+            <p className="text-slate-600 text-sm font-medium">
+              + Expert doctors across top hospitals
+            </p>
+          </div>
 
-      <button
-        type="button"
-        onClick={nextSlide}
-        aria-label="Next slide"
-        className="absolute right-3 sm:right-6 top-1/2 z-20 flex h-11 w-11 sm:h-12 sm:w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/20 hover:bg-white/40 text-2xl text-white backdrop-blur-md shadow-lg transition hover:scale-110 focus:outline-none"
-      >
-        ›
-      </button>
+          {/* Stat 2 */}
+          <div className="bg-slate-50/60 hover:bg-white rounded-3xl p-6 sm:p-7 border border-slate-200/80 hover:border-blue-200 hover:shadow-lg transition-all">
+            <div className="text-4xl sm:text-5xl font-black text-slate-950 tracking-tight mb-2">
+              8
+            </div>
+            <p className="text-slate-600 text-sm font-medium">
+              Core treatment specialties
+            </p>
+          </div>
 
-      {/* Pagination Indicators */}
-      <div className="absolute bottom-6 left-1/2 z-20 flex -translate-x-1/2 gap-2.5">
-        {slides.map((_, index) => (
-          <button
-            key={index}
-            type="button"
-            onClick={() => setActiveSlide(index)}
-            aria-label={`Go to slide ${index + 1}`}
-            className={`h-2.5 rounded-full transition-all duration-300 ${
-              activeSlide === index
-                ? "w-9 bg-blue-500 shadow-md shadow-blue-500/50"
-                : "w-2.5 bg-white/50 hover:bg-white/80"
-            }`}
-          />
-        ))}
+          {/* Stat 3 */}
+          <div className="bg-slate-50/60 hover:bg-white rounded-3xl p-6 sm:p-7 border border-slate-200/80 hover:border-blue-200 hover:shadow-lg transition-all">
+            <div className="text-4xl sm:text-5xl font-black text-slate-950 tracking-tight mb-2">
+              8
+            </div>
+            <p className="text-slate-600 text-sm font-medium">
+              Step end-to-end process
+            </p>
+          </div>
+
+        </div>
+
+        {/* Ticker / Specialty Smooth Infinite Marquee Strip */}
+        <div className="mt-10 pt-6 border-t border-slate-100 relative overflow-hidden">
+          {/* Left Fade Gradient */}
+          <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 sm:w-28 bg-gradient-to-r from-white via-white/90 to-transparent z-10" />
+
+          {/* Right Fade Gradient */}
+          <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 sm:w-28 bg-gradient-to-l from-white via-white/90 to-transparent z-10" />
+
+          {/* Marquee Track */}
+          <div className="animate-marquee flex items-center gap-6 sm:gap-8 py-2 select-none">
+            {marqueeItems.map((item, idx) => (
+              <div key={idx} className="flex items-center gap-6 sm:gap-8 flex-shrink-0">
+                <span className="text-xs sm:text-sm font-bold text-slate-800 hover:text-blue-600 transition-colors whitespace-nowrap">
+                  {item}
+                </span>
+                <span className="w-1.5 h-1.5 rounded-full bg-slate-300 flex-shrink-0" />
+              </div>
+            ))}
+          </div>
+        </div>
+
       </div>
-    </div>
+    </section>
   );
 }

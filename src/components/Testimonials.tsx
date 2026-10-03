@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const testimonials = [
   {
     name: 'Idris Hawuva',
@@ -23,12 +25,22 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="py-12 sm:py-16 lg:py-20 bg-gray-50/60">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="testimonials" className="py-16 sm:py-24 bg-gradient-to-b from-slate-50/70 via-white to-slate-50/80 relative overflow-hidden">
+      {/* Background Subtle Accent Gradients */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-100/40 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 right-10 w-80 h-80 bg-indigo-100/30 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center mb-10 sm:mb-16 max-w-3xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 tracking-tight">Patient Testimonials</h2>
+        <div className="text-center mb-14 sm:mb-18 max-w-3xl mx-auto">
+          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200/80 text-blue-600 font-semibold text-xs tracking-wider uppercase mb-3 shadow-xs">
+            <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
+            Patient Stories
+          </span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
+            Patient Testimonials
+          </h2>
         </div>
 
         {/* Testimonials Cards Grid */}
@@ -36,32 +48,58 @@ export default function Testimonials() {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="group relative bg-white rounded-2xl p-6 sm:p-7 border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between hover:-translate-y-1.5 overflow-hidden"
+              className="group relative bg-white/95 backdrop-blur-md rounded-3xl p-6 sm:p-7 border border-slate-200/80 shadow-sm hover:shadow-2xl hover:shadow-blue-500/15 transition-all duration-300 flex flex-col justify-between hover:-translate-y-2 overflow-hidden"
             >
-              {/* Top Accent Line on hover */}
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-indigo-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+              {/* Top Gradient Border Accent */}
+              <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-blue-600 via-indigo-500 to-teal-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
               <div>
-                {/* Top: Image & Patient Details */}
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden bg-blue-50 border-2 border-blue-100 flex-shrink-0 shadow-sm group-hover:border-blue-500 transition-colors">
-                    <img
+                {/* Header: Patient Image, Name & Rating */}
+                <div className="flex items-center gap-3.5 mb-5">
+                  <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-2xl overflow-hidden bg-gradient-to-br from-blue-100 to-indigo-100 p-0.5 shadow-sm group-hover:scale-105 group-hover:shadow-md transition-all duration-300 flex-shrink-0 border border-blue-100">
+                    <Image
                       src={testimonial.image}
                       alt={testimonial.name}
-                      className="w-full h-full object-cover"
+                      fill
+                      sizes="64px"
+                      className="object-cover rounded-2xl"
                     />
                   </div>
                   <div>
-                    <h4 className="font-bold text-gray-900 text-base group-hover:text-blue-600 transition-colors leading-tight">
+                    <h4 className="font-bold text-slate-900 text-base group-hover:text-blue-600 transition-colors leading-snug">
                       {testimonial.name}
                     </h4>
+                    {/* Modern 5-Star Rating */}
+                    <div className="flex items-center gap-1 mt-1 text-amber-400 text-xs">
+                      {Array.from({ length: 5 }).map((_, i) => (
+                        <svg key={i} className="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20">
+                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                      ))}
+                    </div>
                   </div>
                 </div>
 
+                {/* Decorative Quote Icon */}
+                <div className="text-blue-200 group-hover:text-blue-300 transition-colors text-3xl font-serif leading-none mb-2">
+                  “
+                </div>
+
                 {/* Message Content */}
-                <p className="text-gray-600 text-xs sm:text-sm leading-relaxed italic">
+                <p className="text-slate-600 text-xs sm:text-sm leading-relaxed italic font-normal">
                   "{testimonial.text}"
                 </p>
+              </div>
+
+              {/* Verified Pill Footer */}
+              <div className="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between">
+                <div className="inline-flex items-center gap-1.5 text-emerald-600 text-xs font-semibold bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-100">
+                  <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span>Verified Patient</span>
+                </div>
+                <span className="text-slate-300 text-xs font-mono">India Care</span>
               </div>
 
             </div>

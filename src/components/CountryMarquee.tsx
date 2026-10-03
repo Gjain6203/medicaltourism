@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 const countries = [
   {
     name: "Dubai (UAE)",
@@ -68,9 +70,13 @@ export default function CountryMarquee() {
   const marqueeList = [...countries, ...countries];
 
   return (
-    <section className="py-10 sm:py-14 bg-gray-50/60 border-b border-gray-100 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6 sm:mb-8 text-center">
-        <h3 className="text-2xl sm:text-3xl font-bold text-gray-900">
+    <section className="py-14 sm:py-20 bg-slate-50/80 border-b border-slate-100 overflow-hidden relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 sm:mb-12 text-center">
+        <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200/80 text-blue-600 font-semibold text-xs tracking-wider uppercase mb-3 shadow-xs">
+          <span className="w-2 h-2 rounded-full bg-blue-600"></span>
+          Worldwide Reach
+        </span>
+        <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
           COUNTRIES COVERED
         </h3>
       </div>
@@ -78,32 +84,35 @@ export default function CountryMarquee() {
       {/* Marquee Wrapper with left & right gradient fade */}
       <div className="relative w-full overflow-hidden">
         {/* Left Fade Gradient */}
-        <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-12 sm:w-28 bg-gradient-to-r from-gray-50 to-transparent z-10" />
+        <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-20 sm:w-40 bg-gradient-to-r from-slate-50 via-slate-50/90 to-transparent z-10" />
 
         {/* Right Fade Gradient */}
-        <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-12 sm:w-28 bg-gradient-to-l from-gray-50 to-transparent z-10" />
+        <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-20 sm:w-40 bg-gradient-to-l from-slate-50 via-slate-50/90 to-transparent z-10" />
 
         {/* Infinite Scrolling Track */}
-        <div className="animate-marquee flex items-center gap-4 sm:gap-6 py-2">
+        <div className="animate-marquee flex items-center gap-4 sm:gap-6 py-4">
           {marqueeList.map((country, index) => (
             <div
               key={index}
-              className="flex-shrink-0 flex items-center gap-3 sm:gap-4 bg-white hover:bg-blue-50/80 border border-gray-100 hover:border-blue-200 rounded-2xl px-4 sm:px-6 py-3 sm:py-4 transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-1 cursor-pointer group"
+              className="flex-shrink-0 flex items-center gap-4 bg-white hover:bg-blue-50/80 border border-slate-200/80 hover:border-blue-300 rounded-2xl px-5 sm:px-6 py-3.5 sm:py-4 transition-all duration-300 shadow-sm hover:shadow-xl hover:shadow-blue-500/10 hover:-translate-y-1.5 cursor-pointer group"
             >
               {/* Flag Icon */}
-              <div className="w-14 h-10 sm:w-16 sm:h-12 rounded-xl bg-gray-50 border border-gray-200/80 overflow-hidden flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
-                <img
+              <div className="w-12 h-9 sm:w-14 sm:h-10 rounded-xl bg-slate-100 border border-slate-200/90 overflow-hidden flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform flex-shrink-0">
+                <Image
                   src={country.icon}
                   alt={country.name}
+                  width={56}
+                  height={40}
                   className="w-full h-full object-cover"
                 />
               </div>
 
               {/* Country Name */}
               <div>
-                <h4 className="font-bold text-gray-900 group-hover:text-blue-600 transition-colors text-sm sm:text-base whitespace-nowrap">
+                <h4 className="font-bold text-slate-900 group-hover:text-blue-600 transition-colors text-sm sm:text-base whitespace-nowrap">
                   {country.name}
                 </h4>
+                <p className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Patient Support</p>
               </div>
             </div>
           ))}

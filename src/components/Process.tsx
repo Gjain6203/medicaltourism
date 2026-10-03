@@ -43,49 +43,66 @@ const steps = [
 
 export default function Process() {
   return (
-    <section id="process" className="py-12 sm:py-16 lg:py-20 bg-gray-50/60">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="process" className="py-16 sm:py-24 bg-slate-50/50 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
         {/* Section Header */}
-        <div className="text-center mb-10 sm:mb-16 max-w-3xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 tracking-tight">Understanding the Process</h2>
-          <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
+        <div className="mb-12 sm:mb-16">
+          <span className="text-xs font-bold text-blue-600 tracking-widest uppercase block mb-3">
+            HOW IT WORKS
+          </span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-950 tracking-tight mb-3">
+            Understanding the Process
+          </h2>
+          <p className="text-slate-600 text-sm sm:text-base lg:text-lg max-w-3xl leading-relaxed font-normal">
             This is the whole pipeline of the process that works to help you. We’ve got you covered by every possible means and reveal out a completely transparent journey.
           </p>
         </div>
 
-        {/* Process Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-          {steps.map((step, index) => (
+        {/* Stepper Pipeline Cards Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {steps.map((step) => (
             <div
-              key={index}
-              className="group relative bg-white rounded-2xl p-6 sm:p-7 border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col hover:-translate-y-1.5 overflow-hidden"
+              key={step.number}
+              className="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-slate-300 transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1"
             >
-              {/* Top Accent Line on hover */}
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-blue-700 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-
-              {/* Card Header with Step Number & Tag */}
-              <div className="flex items-center justify-between mb-4 sm:mb-5">
-                <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-blue-50 text-blue-600 font-bold text-base sm:text-lg flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300 shadow-sm">
-                  {step.number.padStart(2, '0')}
+              <div>
+                {/* Step Indicator */}
+                <div className="flex items-center justify-between mb-4">
+                  <span className="w-10 h-10 rounded-2xl bg-blue-50 text-blue-600 font-black text-base flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all shadow-xs">
+                    0{step.number}
+                  </span>
+                  <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">
+                    Step {step.number}
+                  </span>
                 </div>
-              </div>
 
-              {/* Card Body */}
-              <div className="flex flex-col flex-grow">
-                <h3 className="text-base sm:text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors mb-2.5">
+                {/* Step Title */}
+                <h3 className="text-base sm:text-lg font-bold text-slate-950 mb-2.5 group-hover:text-blue-600 transition-colors">
                   {step.title}
                 </h3>
-                <p className="text-gray-600 text-xs sm:text-sm leading-relaxed flex-grow">
+
+                {/* Step Description */}
+                <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
                   {step.description}
                 </p>
+              </div>
+
+              <div className="mt-5 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400 font-semibold uppercase tracking-wider">
+                <span>Phase 0{step.number}</span>
+                <span className="group-hover:text-blue-600 transition-colors font-bold">End-to-End</span>
               </div>
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );
 }
+
+
+
 
 
 

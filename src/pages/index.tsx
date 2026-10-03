@@ -25,7 +25,7 @@ export default function Home() {
         />
         <meta name="keywords" content="Medical Tourism India, Surgery in India, Apollo Hospitals, Fortis Healthcare, Medanta Medicity, Knee Replacement India, Heart Bypass India, Medical Visa India" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/faviconmedical.webp" type="image/webp" />
+        <link rel="icon" href="/sonaura_favicon.webp" type="image/webp" />
       </Head>
 
       <main className="min-h-screen bg-white text-gray-900">

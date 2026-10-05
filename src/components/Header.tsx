@@ -54,6 +54,14 @@ export default function Header() {
             <a href="tel:+916005110609" className="flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors">
               <span>📞</span> +91 6005110609
             </a>
+            <a
+              href="https://wa.me/916005110609"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 text-emerald-400 hover:text-emerald-300 font-medium transition-colors"
+            >
+              <span>💬</span> WhatsApp: +91 6005110609
+            </a>
           </div>
           <div className="flex items-center gap-4 text-slate-300">
             <a href="mailto:info@sonauramedicaltourism.com" className="hover:text-white transition-colors">
@@ -177,6 +185,22 @@ export default function Header() {
               >
                 Get Free Consultation
               </Link>
+            </div>
+            <div className="pt-3 border-t border-slate-100 mt-2 space-y-2">
+              <a
+                href="tel:+916005110609"
+                className="flex items-center justify-center gap-2 py-2.5 px-4 bg-slate-100 text-slate-800 rounded-xl font-medium text-sm hover:bg-slate-200 transition-colors"
+              >
+                <span>📞</span> Call: +91 6005110609
+              </a>
+              <a
+                href="https://wa.me/916005110609"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 py-2.5 px-4 bg-[#25D366] hover:bg-[#20bd5a] text-white rounded-xl font-bold text-sm transition-colors shadow-sm"
+              >
+                <span>💬</span> WhatsApp: +91 6005110609
+              </a>
             </div>
           </div>
         </div>

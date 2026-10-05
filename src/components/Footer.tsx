@@ -88,10 +88,21 @@ export default function Footer() {
               <div className="flex items-start gap-3">
                 <span className="text-blue-400 text-base flex-shrink-0 mt-0.5">📞</span>
                 <div className="min-w-0">
-                  <strong className="text-slate-200 block text-xs">Phone / WhatsApp:</strong>
-                  <a href="tel:+916005110609" className="text-slate-400 hover:text-white transition-colors font-mono block mt-0.5">
-                    +91 6005110609
-                  </a>
+                  <strong className="text-slate-200 block text-xs">Phone & WhatsApp:</strong>
+                  <div className="flex flex-wrap items-center gap-2 mt-0.5">
+                    <a href="tel:+916005110609" className="text-slate-300 hover:text-white transition-colors font-mono">
+                      +91 6005110609
+                    </a>
+                    <span className="text-slate-600 hidden sm:inline">•</span>
+                    <a
+                      href="https://wa.me/916005110609"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-emerald-400 hover:text-emerald-300 font-medium transition-colors inline-flex items-center gap-1 text-xs"
+                    >
+                      <span>💬</span> WhatsApp Us
+                    </a>
+                  </div>
                 </div>
               </div>
 
@@ -110,12 +121,12 @@ export default function Footer() {
                 <div className="min-w-0">
                   <strong className="text-slate-200 block text-xs">Address:</strong>
                   <a
-                    href="https://maps.google.com/?q=37,+South,+Pocket+1,+Jasola,+New+Delhi,+Delhi+110025,+India"
+                    href=""
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-slate-400 hover:text-white transition-colors leading-relaxed block mt-0.5"
                   >
-                    37, South, Pocket 1, Jasola, New Delhi, 110025, India
+                    Sonaura Global HealthCare, beside Jasola Apollo Metro Station, Jasola Vihar, New Delhi, Delhi 110025
                   </a>
                 </div>
               </div>

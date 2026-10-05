@@ -64,13 +64,21 @@ export default function Contact() {
                   📞
                 </div>
                 <div>
-                  <h4 className="font-bold text-slate-900 mb-1 text-base">Phone / WhatsApp</h4>
-                  <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+                  <h4 className="font-bold text-slate-900 mb-1 text-base">Phone & WhatsApp</h4>
+                  <div className="flex flex-wrap items-center gap-2.5 mt-2">
                     <a
                       href="tel:+916005110609"
-                      className="text-slate-600 font-medium hover:text-blue-600 transition-colors text-sm sm:text-base font-mono"
+                      className="inline-flex items-center gap-1.5 text-slate-800 font-semibold hover:text-blue-600 transition-colors text-sm sm:text-base font-mono bg-slate-100 hover:bg-blue-50 px-3 py-1.5 rounded-xl border border-slate-200/70"
                     >
-                      +91 6005110609
+                      <span>📞</span> +91 6005110609
+                    </a>
+                    <a
+                      href="https://wa.me/916005110609"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-emerald-700 font-bold hover:text-emerald-800 transition-colors text-sm sm:text-base bg-emerald-50 hover:bg-emerald-100 px-3 py-1.5 rounded-xl border border-emerald-200"
+                    >
+                      <span>💬</span> Chat on WhatsApp
                     </a>
                   </div>
                 </div>
@@ -99,11 +107,16 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-bold text-slate-900 mb-1 text-base">Address</h4>
-                  <div className="text-slate-600 leading-relaxed block text-sm sm:text-base font-normal">
-                    37, South, Pocket 1, Jasola<br />
-                    New Delhi, Delhi 110025<br />
-                    India
-                  </div>
+                  <a
+                    href="https://maps.google.com/?q=Sonaura+Global+HealthCare,+beside+Jasola+Apollo+Metro+Station,+Jasola+Vihar,+New+Delhi,+Delhi+110025"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-slate-600 hover:text-blue-600 transition-colors leading-relaxed block text-sm sm:text-base font-normal"
+                  >
+                    Sonaura Global HealthCare<br />
+                    Beside Jasola Apollo Metro Station, Jasola Vihar<br />
+                    New Delhi, Delhi 110025, India
+                  </a>
                 </div>
               </div>
             </div>

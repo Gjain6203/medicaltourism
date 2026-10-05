@@ -11,20 +11,18 @@ export default function About() {
           <span className="text-xs font-bold text-blue-600 tracking-widest uppercase">
             ABOUT US
           </span>
+          <h2 className="mt-2 mb-5 text-3xl sm:text-4xl lg:text-5xl font-black text-slate-950 tracking-tight mb-3">
+              A Journey To Good Health
+          </h2>
         </div>
 
-        {/* Section Title */}
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-950 tracking-tight mb-8 sm:mb-10">
-          About Us
-        </h2>
+     
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           
           {/* Left Text Info - 7 cols */}
           <div className="lg:col-span-7 space-y-5">
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight leading-snug">
-              A Journey To Good Health
-            </h3>
+         
             <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
               Sonaura Global HealthCare is one of the renowned and most reputable companies that specialize in Indian medical tourism. India presents World Class Medical Facilities, as compared to any of the Western and European countries. India is state of the art in terms of Hospitals and has the finest medical experts. With the most splendid infrastructure, facilities, and prices, you can get the treatments done in India fairly. The availability of Ayurveda and Naturopathy in the purest form turns India into the most sought-after health destination.
             </p>

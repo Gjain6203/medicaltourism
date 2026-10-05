@@ -17,10 +17,10 @@ export default function AboutPage() {
   return (
     <>
       <Head>
-        <title>About Us | AJ Medical Tourism India</title>
+        <title>About Us | Sonaura Global HealthCare India</title>
         <meta
           name="description"
-          content="Learn about AJ Medical Tourism, the premier medical tourism company connecting global patients with top hospitals and surgeons in India."
+          content="Learn about Sonaura Global HealthCare, the premier medical tourism company connecting global patients with top hospitals and surgeons in India."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>

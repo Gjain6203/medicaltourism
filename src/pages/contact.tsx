@@ -11,10 +11,10 @@ export default function ContactPage() {
   return (
     <>
       <Head>
-        <title>Contact Us & Free Consultation | AJ Medical Tourism</title>
+        <title>Contact Us & Free Consultation | Sonaura Global HealthCare</title>
         <meta
           name="description"
-          content="Get in touch with AJ Medical Tourism for free doctor counseling, cost estimation, visa assistance, and hospital recommendations in India."
+          content="Get in touch with Sonaura Global HealthCare for free doctor counseling, cost estimation, visa assistance, and hospital recommendations in India."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>

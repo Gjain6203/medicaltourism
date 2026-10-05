@@ -4,22 +4,22 @@ const testimonials = [
   {
     name: 'Idris Hawuva',
     image: '/images/home_gallery8.png',
-    text: 'I came from Nigeria for my father s Surgery at Apollo Hospital in India. They have top quality doctors teams and the best services at affordable cost treatment. I like to say thanks to AJ Medical Tourism company, really I impressed with the there top quality of services and personal care.',
+    text: 'I came from Nigeria for my father s Surgery at Apollo Hospital in India. They have top quality doctors teams and the best services at affordable cost treatment. I like to say thanks to Sonaura Global HealthCare company, really I impressed with the there top quality of services and personal care.',
   },
   {
     name: 'Ugo Baba',
     image: '/images/home_gallery7.png',
-    text: 'I am Ugo from Uganda and came to India for my spine surgery in India at Jaypee Hospital I m really satisfied with the high quality and AJ Medical Tourism services. They have a top surgeon in India. They have a very good hand in spine surgery with a higher success rate at affordable cost.',
+    text: 'I am Ugo from Uganda and came to India for my spine surgery in India at Jaypee Hospital I m really satisfied with the high quality and Sonaura Global HealthCare services. They have a top surgeon in India. They have a very good hand in spine surgery with a higher success rate at affordable cost.',
   },
   {
     name: 'Bekashi Lew',
     image: '/images/home_gallery9.png',
-    text: 'I am Bekashi from Malaysia came to India for my treatment. They are the best and the services given by them are beyond my expectations. I advise you to all Choose AJ Medical Tourism for the treatment plans, they are the best medical tourism company in India and provide treatments at a low cost.',
+    text: 'I am Bekashi from Malaysia came to India for my treatment. They are the best and the services given by them are beyond my expectations. I advise you to all Choose Sonaura Global HealthCare for the treatment plans, they are the best medical tourism company in India and provide treatments at a low cost.',
   },
   {
     name: 'Peter Louis',
     image: '/images/home_gallery6.png',
-    text: 'I am Peter Louis working as a press reporter in South Sudan came to Jaypee Hospital for my general health check-up. I was extremely pleased to be treated by professional staff in an excellent environment at Jaypee Hospital. Offered a higher quality of care to their patients. Special thanks to the AJ Medical Tourism team.',
+    text: 'I am Peter Louis working as a press reporter in South Sudan came to Jaypee Hospital for my general health check-up. I was extremely pleased to be treated by professional staff in an excellent environment at Jaypee Hospital. Offered a higher quality of care to their patients. Special thanks to the Sonaura Global HealthCare team.',
   },
 ];
 
@@ -99,7 +99,6 @@ export default function Testimonials() {
                   </svg>
                   <span>Verified Patient</span>
                 </div>
-                <span className="text-slate-300 text-xs font-mono">India Care</span>
               </div>
 
             </div>

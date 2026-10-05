@@ -112,7 +112,6 @@ export default function CountryMarquee() {
                 <h4 className="font-bold text-slate-900 group-hover:text-blue-600 transition-colors text-sm sm:text-base whitespace-nowrap">
                   {country.name}
                 </h4>
-                <p className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Patient Support</p>
               </div>
             </div>
           ))}

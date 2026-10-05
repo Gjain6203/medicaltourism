@@ -44,7 +44,7 @@ export default function GalleryPage() {
   return (
     <>
       <Head>
-        <title>Gallery | AJ Medical Tourism India</title>
+        <title>Gallery | Sonaura Global HealthCare India</title>
         <meta
           name="description"
           content="View our medical tourism photo gallery and patient video stories."

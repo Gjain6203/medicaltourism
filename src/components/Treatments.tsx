@@ -15,7 +15,7 @@ const treatments = [
   {
     icon: '/images/home_orthopaedic.jpg',
     title: 'ORTHOPAEDIC & JOINT',
-    description: 'Consult a doctor online at AJ MEDICAL TOURISM and get a free follow-up session with us.'
+    description: 'Consult a doctor online at Sonaura Global HealthCare and get a free follow-up session with us.'
   },
   {
     icon: '/images/home_nephrology.png',
@@ -30,7 +30,7 @@ const treatments = [
   {
     icon: '/images/home_gastroenterology.jpg',
     title: 'GASTROENTEROLOGY',
-    description: 'AJ Medical Tourism has a team of the best Gastroenterology Doctors in India. Book an appointment today.'
+    description: 'Sonaura Global HealthCare has a team of the best Gastroenterology Doctors in India. Book an appointment today.'
   },
   {
     icon: '/images/home_urology.jpg',
@@ -58,7 +58,7 @@ export default function Treatments() {
             OUR TOP TREATMENTS
           </h2>
           <p className="text-slate-600 text-sm sm:text-base lg:text-lg max-w-3xl leading-relaxed font-normal">
-            AJ MEDICAL TOURISM helps you to choose the best hospitals, best doctors, and best treatment plans at an affordable cost. Our company goal is to have satisfied and happy medical tourists.
+            Sonaura Global HealthCare helps you to choose the best hospitals, best doctors, and best treatment plans at an affordable cost. Our company goal is to have satisfied and happy medical tourists.
           </p>
         </div>
 
@@ -79,9 +79,6 @@ export default function Treatments() {
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
-                <span className="absolute top-3.5 right-3.5 bg-white/90 backdrop-blur-md text-slate-800 text-[11px] font-bold px-2.5 py-1 rounded-full shadow-xs border border-white/50">
-                  Super Speciality
-                </span>
               </div>
 
               {/* Card Body */}

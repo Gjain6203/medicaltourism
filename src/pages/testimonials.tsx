@@ -14,10 +14,10 @@ export default function TestimonialsPage() {
   return (
     <>
       <Head>
-        <title>Patient Testimonials & Reviews | AJ Medical Tourism</title>
+        <title>Patient Testimonials &amp; Reviews | Sonaura Global HealthCare</title>
         <meta
           name="description"
-          content="Read genuine reviews and testimonials from international patients who received surgery and medical treatments in India through AJ Medical Tourism."
+          content="Read genuine reviews and testimonials from international patients who received surgery and medical treatments in India through Sonaura Global HealthCare."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>

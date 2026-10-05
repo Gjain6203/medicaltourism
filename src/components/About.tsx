@@ -26,10 +26,10 @@ export default function About() {
               A Journey To Good Health
             </h3>
             <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
-              AJ MEDICAL TOURISM is one of the renowned and most reputable companies that specialize in Indian medical tourism. India presents World Class Medical Facilities, as compared to any of the Western and European countries. India is state of the art in terms of Hospitals and has the finest medical experts. With the most splendid infrastructure, facilities, and prices, you can get the treatments done in India fairly. The availability of Ayurveda and Naturopathy in the purest form turns India into the most sought-after health destination.
+              Sonaura Global HealthCare is one of the renowned and most reputable companies that specialize in Indian medical tourism. India presents World Class Medical Facilities, as compared to any of the Western and European countries. India is state of the art in terms of Hospitals and has the finest medical experts. With the most splendid infrastructure, facilities, and prices, you can get the treatments done in India fairly. The availability of Ayurveda and Naturopathy in the purest form turns India into the most sought-after health destination.
             </p>
             <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
-              AJ MEDICAL TOURISM is an Indian Medical Tourism Company that provides treatments and tour packages for international patients coming to India. With an excellent cost control formula, we assist international patients in getting the best quality of medical services and treatment facilities. As a Media tourism company, we are working with various hospitals and medical specialists covering all forms of health – modern and holistic.
+              Sonaura Global HealthCare is an Indian Medical Tourism Company that provides treatments and tour packages for international patients coming to India. With an excellent cost control formula, we assist international patients in getting the best quality of medical services and treatment facilities. As a Medical tourism company, we are working with various hospitals and medical specialists covering all forms of health – modern and holistic.
             </p>
 
             <div className="pt-2">
@@ -48,7 +48,7 @@ export default function About() {
             <div className="relative aspect-[4/3] w-full rounded-3xl overflow-hidden border border-slate-200/90 shadow-xl bg-slate-100">
               <Image
                 src="/images/home_about.jpg"
-                alt="AJ Medical Tourism About Us"
+                alt="Sonaura Global HealthCare About Us"
                 fill
                 sizes="(max-width: 1024px) 100vw, 40vw"
                 className="object-cover group-hover:scale-105 transition-transform duration-700"

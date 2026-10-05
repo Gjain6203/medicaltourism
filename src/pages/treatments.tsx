@@ -16,7 +16,7 @@ export default function TreatmentsPage() {
   return (
     <>
       <Head>
-        <title>Top Medical Treatments & Surgeries in India | AJ Medical Tourism</title>
+        <title>Top Medical Treatments &amp; Surgeries in India | Sonaura Global HealthCare</title>
         <meta
           name="description"
           content="Explore super-speciality medical treatments in India including Cardiac, Brain & Spine, Orthopedic, Cancer, Organ Transplants with affordable costs."

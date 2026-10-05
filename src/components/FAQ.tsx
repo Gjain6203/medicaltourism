@@ -16,8 +16,8 @@ const faqs = [
     answer: "Our Case Manager will be the incharge between you and the hospital and will arrange your appointments as well as the referrals that will be needed for various services like the outpatient clinic, laboratory and pathology, medical imaging, and inpatient surgical procedures.",
   },
   {
-    question: "WHAT IS THE ADVANTAGE TO GET TREATMENT THROUGH AJMEDICALTOURISM.COM?",
-    answer: "For surgical cases, ajmedicaltourism.com offers comprehensive support to its patients, including airport pick-up and drop-off after treatment, transportation between the hotel and hospital, and the assistance of a dedicated Case Manager assigned to each patient throughout their treatment journey. We also strive to provide our patients with the best possible price for their treatment.",
+    question: "WHAT IS THE ADVANTAGE TO GET TREATMENT THROUGH SONAURA GLOBAL HEALTHCARE?",
+    answer: "For surgical cases, Sonaura Global HealthCare offers comprehensive support to its patients, including airport pick-up and drop-off after treatment, transportation between the hotel and hospital, and the assistance of a dedicated Case Manager assigned to each patient throughout their treatment journey. We strive to provide the best value to our patients for their treatment.",
   },
   {
     question: "I WILL BE NEW IN COUNTRY, WILL I GET ANY ASSISTANCE?",
@@ -28,8 +28,8 @@ const faqs = [
     answer: "Certainly, once you confirm your visit to India for medical treatment, we will help you with a visa invitation letter from the hospital. If you would like the concerned hospital to send a visa invitation letter to the Indian Embassy in your country, please send us the patient’s name and passport number, medical escort’s name and passport number, country, tentative date of arrival in Delhi, India for treatment, and the patient’s medical reports, including all relevant medical documents, diagnostic reports, test results, prescriptions, and previous treatment records, via email.",
   },
   {
-    question: "DOES AJMedicals PROVIDE ACCOMMODATION?",
-    answer: "Yes, Depending on your budget, we can arrange accommodation for you and your attendant close to the hospital at nearby guest houses, service apartments, or luxurious 5-star hotels. Price range starting from $20 per day.",
+    question: "DOES SONAURA GLOBAL HEALTHCARE ARRANGE ACCOMMODATION?",
+    answer: "Yes, depending on your budget we can arrange accommodation for you and your attendant near the hospital in a guest house, service apartment, or 5-star hotel. Prices start from $20 per day.",
   },
 ];
 

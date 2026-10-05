@@ -75,7 +75,7 @@ export default function Header() {
             <Link href="/" className="flex items-center gap-2 group transition-transform hover:scale-[1.02]">
               <Image
                 src="/images/sonauralogo1.webp"
-                alt="AJ Medical Tourism Logo"
+                alt="Sonaura Global HealthCare Logo"
                 width={220}
                 height={56}
                 priority

@@ -17,7 +17,7 @@ export default function Footer() {
               <Link href="/" className="inline-block bg-white p-2.5 rounded-2xl shadow-md transition-transform hover:scale-[1.02]">
                 <Image
                   src="/images/sonauralogo1.webp"
-                  alt="Sonaura Medical Tourism Logo"
+                  alt="Sonaura Global HealthCare Logo"
                   width={200}
                   height={50}
                   className="h-10 sm:h-11 w-auto object-contain"
@@ -58,7 +58,7 @@ export default function Footer() {
               <li><Link href="/treatments" className="hover:text-white transition-colors flex items-center gap-1.5"><span>›</span> Cardiac Surgery (CABG)</Link></li>
               <li><Link href="/treatments" className="hover:text-white transition-colors flex items-center gap-1.5"><span>›</span> Brain & Spine Surgery</Link></li>
               <li><Link href="/treatments" className="hover:text-white transition-colors flex items-center gap-1.5"><span>›</span> Orthopedic & Joint</Link></li>
-              <li><Link href="/treatments" className="hover:text-white transition-colors flex items-center gap-1.5"><span>›</span> Kidney & Liver Transplant</Link></li>
+              <li><Link href="/treatments" className="hover:text-white transition-colors flex items-center gap-1.5"><span>›</span> Lung Transplant</Link></li>
               <li><Link href="/treatments" className="hover:text-white transition-colors flex items-center gap-1.5"><span>›</span> Cancer Care & Oncology</Link></li>
               <li><Link href="/treatments" className="hover:text-white transition-colors flex items-center gap-1.5"><span>›</span> Urology & Nephrology</Link></li>
             </ul>
@@ -113,7 +113,7 @@ export default function Footer() {
         <div className="border-t border-slate-800/80 pt-8 mt-4">
           <div className="flex flex-col sm:flex-row justify-between items-center text-xs sm:text-sm gap-4 text-center sm:text-left text-slate-400">
             <p>
-              Copyright © 2026 Sonaura Medical Tourism. All rights reserved.
+              Copyright © 2026 Sonaura Global HealthCare. All rights reserved.
             </p>
             <div className="flex space-x-6 text-xs">
               <a href="/privacy_policy" className="text-slate-400 hover:text-white transition-colors">Privacy Policy</a>

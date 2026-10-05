@@ -2,7 +2,7 @@ const steps = [
   {
     number: '1',
     title: 'Inquiry Process',
-    description: 'Drop your queries and Friendly Advance will guide the treatment process. We will serve you from scratch. Our 24*7 dedicated teams will assist you.'
+    description: 'Drop your queries and our dedicated team will guide the treatment process. We will serve you from scratch. Our 24*7 dedicated teams will assist you.'
   },
   {
     number: '2',
@@ -22,22 +22,22 @@ const steps = [
   {
     number: '5',
     title: 'Airport Assistance',
-    description: 'AJ Medical Tourism will provide airport assistance in India. Your pre-decided hotel/ guest house along with choice of meal and lodging facility would be waiting for you.'
+    description: 'Sonaura Global HealthCare will provide airport assistance in India. Your pre-decided hotel/ guest house along with choice of meal and lodging facility would be waiting for you.'
   },
   {
     number: '6',
     title: 'Hassle-Free Treatment',
-    description: 'Drop your queries and Friendly Health will guide post the treatment process. We will serve you from scratch. Our 24*7 dedicated teams will assist you.'
+    description: 'During treatment, Sonaura Global HealthCare assists at every step. Our 24*7 dedicated team will guide you through the complete hospital stay and treatment process.'
   },
   {
     number: '7',
-    title: 'Stress-Free Discharge',
-    description: 'We will be with you till the point of patient discharge and even post that. Every after care need of yours is well taken care of. Top patient care is our topmost priority'
+    title: 'Stress-Free Stay',
+    description: 'Post-surgery care and comfortable stay until patient discharge. Complete after-care support is provided for patient comfort.'
   },
   {
     number: '8',
-    title: 'Handling Follow-Up',
-    description: 'AJ Medical Tourism takes the responsibility after the treatment process and even when the patient goes back to their country. We assist your counseling with your doctor.'
+    title: 'Post-Treatment Follow-up',
+    description: 'Sonaura Global HealthCare takes responsibility even after the treatment process and after the patient returns to their country. Continuous follow-up and doctor counseling are provided.'
   },
 ];
 
@@ -52,7 +52,7 @@ export default function Process() {
             HOW IT WORKS
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-950 tracking-tight mb-3">
-            Understanding the Process
+            OUR 8 STEP PROCESS TO TREATMENT
           </h2>
           <p className="text-slate-600 text-sm sm:text-base lg:text-lg max-w-3xl leading-relaxed font-normal">
             This is the whole pipeline of the process that works to help you. We’ve got you covered by every possible means and reveal out a completely transparent journey.

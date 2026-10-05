@@ -10,7 +10,7 @@ import Link from 'next/link';
 const blogPosts = [
   {
     title: 'Why India is the #1 Destination for Heart Surgery & Cardiology in 2026',
-    category: 'Cardiac Care',
+   
     date: 'September 2026',
     image: '/images/home_Cardiac.jpeg',
     snippet: 'Learn why patients from the US, UK, Africa, and the Middle East travel to India for bypass surgery, valve replacements, and minimally invasive cardiac procedures with up to 80% cost savings.',
@@ -18,7 +18,7 @@ const blogPosts = [
   },
   {
     title: 'Complete Guide to Getting a Medical Visa (Med Visa) for India',
-    category: 'Visa & Travel Guide',
+   
     date: 'September 2026',
     image: '/images/home_about.jpg',
     snippet: 'Step-by-step instructions on obtaining an official Visa Invitation Letter (VIL) from accredited hospital chains, required documents, and priority airport assistance.',
@@ -26,7 +26,7 @@ const blogPosts = [
   },
   {
     title: 'Robotic Knee & Joint Replacement in India: Benefits & Fast Recovery',
-    category: 'Orthopedics',
+   
     date: 'August 2026',
     image: '/images/home_orthopaedic.jpg',
     snippet: 'Discover how robotic technology is revolutionizing orthopedic surgery in India, ensuring pinpoint precision, minimal blood loss, and walking on the same day.',
@@ -34,7 +34,7 @@ const blogPosts = [
   },
   {
     title: 'Cost Breakdown: Medical Treatments in India vs USA & Europe',
-    category: 'Cost & Savings',
+    
     date: 'August 2026',
     image: '/images/home_cancer.webp',
     snippet: 'A comprehensive transparent comparison of surgery costs across major super-speciality procedures with zero waiting times and JCI-accredited care.',
@@ -42,7 +42,7 @@ const blogPosts = [
   },
   {
     title: 'Minimally Invasive Spine Surgery: Say Goodbye to Chronic Back Pain',
-    category: 'Brain & Spine',
+   
     date: 'July 2026',
     image: '/images/home_brain&spine.jpg',
     snippet: 'How cutting-edge endoscopic spine decompression and disc fusion procedures in Delhi NCR help international patients achieve complete painless mobility.',
@@ -50,7 +50,7 @@ const blogPosts = [
   },
   {
     title: 'Living Donor Liver & Kidney Transplants: Success Rates and Logistics',
-    category: 'Organ Transplant',
+   
     date: 'July 2026',
     image: '/images/home_nephrology.png',
     snippet: 'An overview of clinical protocols, legal workup, and world-class transplant outcomes at India’s top multi-speciality hospital networks.',
@@ -62,7 +62,7 @@ export default function BlogPage() {
   return (
     <>
       <Head>
-        <title>Medical Tourism Blog & Healthcare Guides | AJ Medical Tourism</title>
+        <title>Medical Tourism Blog &amp; Healthcare Guides | Sonaura Global HealthCare</title>
         <meta
           name="description"
           content="Read latest articles, surgical guides, cost comparisons, and medical visa tips for patients traveling to India for healthcare."
@@ -109,9 +109,6 @@ export default function BlogPage() {
                       className="object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent opacity-40 group-hover:opacity-20 transition-opacity" />
-                    <span className="absolute top-4 left-4 bg-blue-600 text-white text-xs font-bold px-3.5 py-1 rounded-full shadow-md">
-                      {post.category}
-                    </span>
                   </div>
 
                   {/* Blog Content */}

@@ -58,17 +58,20 @@ export default function Contact() {
             </h2>
             
             <div className="space-y-4 sm:space-y-5">
-              {/* Phone Card */}
+              {/* Phone & WhatsApp Card */}
               <div className="group flex items-start gap-4 p-5 sm:p-6 rounded-3xl bg-white border border-slate-200/80 shadow-sm hover:shadow-xl hover:border-blue-300 transition-all duration-300">
                 <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center text-white text-xl flex-shrink-0 shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform">
                   📞
                 </div>
-                <div>
-                  <h4 className="font-bold text-slate-900 mb-1 text-base">Phone & WhatsApp</h4>
-                  <div className="flex flex-wrap items-center gap-2.5 mt-2">
+                <div className="flex-1 min-w-0">
+                  <h4 className="font-bold text-slate-900 mb-1 text-base">Direct Helpline & WhatsApp</h4>
+                  <p className="text-xs text-slate-500 mb-2.5">
+                    Call 24/7 or chat with our medical coordinators to share reports.
+                  </p>
+                  <div className="flex flex-wrap items-center gap-2.5">
                     <a
                       href="tel:+916005110609"
-                      className="inline-flex items-center gap-1.5 text-slate-800 font-semibold hover:text-blue-600 transition-colors text-sm sm:text-base font-mono bg-slate-100 hover:bg-blue-50 px-3 py-1.5 rounded-xl border border-slate-200/70"
+                      className="inline-flex items-center gap-1.5 text-slate-800 font-semibold hover:text-blue-600 transition-colors text-xs sm:text-sm font-mono bg-slate-100 hover:bg-blue-50 px-3 py-2 rounded-xl border border-slate-200/70"
                     >
                       <span>📞</span> +91 6005110609
                     </a>
@@ -76,7 +79,7 @@ export default function Contact() {
                       href="https://wa.me/916005110609"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-emerald-700 font-bold hover:text-emerald-800 transition-colors text-sm sm:text-base bg-emerald-50 hover:bg-emerald-100 px-3 py-1.5 rounded-xl border border-emerald-200"
+                      className="inline-flex items-center gap-1.5 text-emerald-800 font-bold hover:text-emerald-900 transition-colors text-xs sm:text-sm bg-emerald-50 hover:bg-emerald-100 px-3 py-2 rounded-xl border border-emerald-300/80"
                     >
                       <span>💬</span> Chat on WhatsApp
                     </a>

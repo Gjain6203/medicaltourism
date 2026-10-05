@@ -51,16 +51,8 @@ export default function Header() {
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
               24/7 International Patient Assistance
             </span>
-            <a href="tel:+916005110609" className="flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors">
+            <a href="tel:+916005110609" className="flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors font-mono">
               <span>📞</span> +91 6005110609
-            </a>
-            <a
-              href="https://wa.me/916005110609"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-emerald-400 hover:text-emerald-300 font-medium transition-colors"
-            >
-              <span>💬</span> WhatsApp: +91 6005110609
             </a>
           </div>
           <div className="flex items-center gap-4 text-slate-300">
@@ -186,21 +178,26 @@ export default function Header() {
                 Get Free Consultation
               </Link>
             </div>
-            <div className="pt-3 border-t border-slate-100 mt-2 space-y-2">
-              <a
-                href="tel:+916005110609"
-                className="flex items-center justify-center gap-2 py-2.5 px-4 bg-slate-100 text-slate-800 rounded-xl font-medium text-sm hover:bg-slate-200 transition-colors"
-              >
-                <span>📞</span> Call: +91 6005110609
-              </a>
-              <a
-                href="https://wa.me/916005110609"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 py-2.5 px-4 bg-[#25D366] hover:bg-[#20bd5a] text-white rounded-xl font-bold text-sm transition-colors shadow-sm"
-              >
-                <span>💬</span> WhatsApp: +91 6005110609
-              </a>
+            <div className="pt-3 border-t border-slate-100 mt-2">
+              <div className="grid grid-cols-2 gap-2">
+                <a
+                  href="tel:+916005110609"
+                  className="flex items-center justify-center gap-1.5 py-2.5 px-3 bg-slate-100 text-slate-800 rounded-xl font-semibold text-xs sm:text-sm hover:bg-slate-200 transition-colors"
+                >
+                  <span>📞</span> Call Us
+                </a>
+                <a
+                  href="https://wa.me/916005110609"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-1.5 py-2.5 px-3 bg-[#25D366] hover:bg-[#20bd5a] text-white rounded-xl font-bold text-xs sm:text-sm transition-colors shadow-sm"
+                >
+                  <span>💬</span> WhatsApp
+                </a>
+              </div>
+              <p className="text-center text-[11px] text-slate-400 font-mono mt-1.5">
+                24/7 Helpline: +91 6005110609
+              </p>
             </div>
           </div>
         </div>

@@ -18,7 +18,7 @@ const treatments = [
     description: 'Consult a doctor online at Sonaura Global HealthCare and get a free follow-up session with us.'
   },
   {
-    icon: '/images/home_nephrology.png',
+    icon: '/images/home_nephrology.webp',
     title: 'NEPHROLOGY TREATMENT',
     description: 'Looking for the Best Nephrology Treatment or Kidney Transplant Hospitals in India? We will help you.'
   },

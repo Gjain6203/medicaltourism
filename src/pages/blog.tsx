@@ -52,7 +52,7 @@ const blogPosts = [
     title: 'Living Donor Liver & Kidney Transplants: Success Rates and Logistics',
    
     date: 'July 2026',
-    image: '/images/home_nephrology.png',
+    image: '/images/home_nephrology.webp',
     snippet: 'An overview of clinical protocols, legal workup, and world-class transplant outcomes at India’s top multi-speciality hospital networks.',
     readTime: '8 min read',
   },

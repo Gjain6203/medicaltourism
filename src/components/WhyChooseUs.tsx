@@ -36,10 +36,10 @@ export default function WhyChooseUs() {
               India&apos;s Premier Medical Network
             </span>
             <h3 className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight leading-tight">
-              Why Expect Experienced Doctors &amp; Hospitals In India
+              100+ Expert Doctors Across Top Hospitals In India
             </h3>
             <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-normal max-w-xl mx-auto">
-              100+ Expert Doctors across top hospitals in India. We are with you at every step of your medical journey with comprehensive healthcare support.
+We are the medical service provider to assist you in your complete medical journey of any kind.
             </p>
             <div className="pt-3">
               <Link

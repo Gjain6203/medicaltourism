@@ -50,7 +50,7 @@ export default function Footer() {
           </div>
 
           {/* Col 3: Popular Treatments (2.5 cols) */}
-          <div className="lg:col-span-3">
+          {/* <div className="lg:col-span-3">
             <h4 className="text-white font-bold mb-4 text-sm sm:text-base tracking-tight uppercase tracking-wider text-xs text-blue-400">
               Treatments
             </h4>
@@ -62,7 +62,7 @@ export default function Footer() {
               <li><Link href="/treatments" className="hover:text-white transition-colors flex items-center gap-1.5"><span>›</span> Cancer Care & Oncology</Link></li>
               <li><Link href="/treatments" className="hover:text-white transition-colors flex items-center gap-1.5"><span>›</span> Urology & Nephrology</Link></li>
             </ul>
-          </div>
+          </div> */}
 
           {/* Col 4: Contact Info (3 cols) */}
           <div className="lg:col-span-3">

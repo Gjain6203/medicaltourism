@@ -2,7 +2,7 @@ const steps = [
   {
     number: '1',
     title: 'Inquiry Process',
-    description: 'Drop your queries and our dedicated team will guide the treatment process. We will serve you from scratch. Our 24*7 dedicated teams will assist you.'
+    description: 'Drop your queries and Friendly Advance will guide the treatment process. We will serve you from scratch. Our 24*7 dedicated teams will assist you.'
   },
   {
     number: '2',
@@ -27,17 +27,17 @@ const steps = [
   {
     number: '6',
     title: 'Hassle-Free Treatment',
-    description: 'During treatment, Sonaura Global HealthCare assists at every step. Our 24*7 dedicated team will guide you through the complete hospital stay and treatment process.'
+    description: 'Drop your queries and Friendly Health will guide post the treatment process. We will serve you from scratch. Our 24*7 dedicated teams will assist you.'
   },
   {
     number: '7',
     title: 'Stress-Free Stay',
-    description: 'Post-surgery care and comfortable stay until patient discharge. Complete after-care support is provided for patient comfort.'
+    description: 'We will be with you till the point of patient discharge and even post that. Every after care need of yours is well taken care of. Top patient care is our topmost priority'
   },
   {
     number: '8',
     title: 'Post-Treatment Follow-up',
-    description: 'Sonaura Global HealthCare takes responsibility even after the treatment process and after the patient returns to their country. Continuous follow-up and doctor counseling are provided.'
+    description: 'Sonaura Global HealthCare takes the responsibility after the treatment process and even when the patient goes back to their country. We assist your counseling with your doctor.'
   },
 ];
 

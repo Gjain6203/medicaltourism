@@ -56,8 +56,8 @@ export default function Header() {
             </a>
           </div>
           <div className="flex items-center gap-4 text-slate-300">
-            <a href="mailto:info@sonauramedicaltourism.com" className="hover:text-white transition-colors">
-              ✉️ info@sonauramedicaltourism.com
+            <a href="mailto:sonaurahealth@gmail.com" className="hover:text-white transition-colors">
+              ✉️ sonaurahealth@gmail.com
             </a>
             <span className="text-slate-600">|</span>
             <span className="text-amber-400 font-medium flex items-center gap-1">

@@ -110,8 +110,8 @@ export default function Footer() {
                 <span className="text-blue-400 text-base flex-shrink-0 mt-0.5">✉️</span>
                 <div className="min-w-0">
                   <strong className="text-slate-200 block text-xs">Email:</strong>
-                  <a href="mailto:info@sonauramedicaltourism.com" className="text-slate-400 hover:text-white transition-colors break-all block mt-0.5">
-                    info@sonauramedicaltourism.com
+                  <a href="mailto:sonaurahealth@gmail.com" className="text-slate-400 hover:text-white transition-colors break-all block mt-0.5">
+                    sonaurahealth@gmail.com
                   </a>
                 </div>
               </div>

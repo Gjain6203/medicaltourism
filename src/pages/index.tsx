@@ -25,6 +25,10 @@ export default function Home() {
         />
         <meta name="keywords" content="Medical Tourism India, Surgery in India, Apollo Hospitals, Fortis Healthcare, Medanta Medicity, Knee Replacement India, Heart Bypass India, Medical Visa India" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://sonaurahealthcare.com/" />
+        <meta property="og:url" content="https://sonaurahealthcare.com/" />
+        <meta property="og:title" content="Sonaura Global HealthCare | World-Class Healthcare & Affordable Surgeries in India" />
+        <meta property="og:description" content="Find the best medical treatment and super-specialist surgeons in India. Save up to 70-80% on Heart, Spine, Orthopedic, Cancer and Transplant surgeries." />
         <link rel="icon" href="/sonaura_favicon.webp" type="image/webp" />
       </Head>
 

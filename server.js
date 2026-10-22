@@ -100,6 +100,30 @@ app.prepare().then(() => {
     const parsedUrl = parse(req.url, true);
     const { pathname } = parsedUrl;
 
+    // Diagnostic debug endpoint
+    if (pathname === '/server-debug') {
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      try {
+        const files = fs.readdirSync(__dirname);
+        const nextPath = path.join(__dirname, '.next');
+        const hasNext = fs.existsSync(nextPath);
+        const staticPath = path.join(__dirname, '.next', 'static');
+        const hasStatic = fs.existsSync(staticPath);
+        res.end(JSON.stringify({
+          status: 'ok',
+          dirname: __dirname,
+          files,
+          hasNext,
+          nextContents: hasNext ? fs.readdirSync(nextPath) : null,
+          hasStatic,
+          staticContents: hasStatic ? fs.readdirSync(staticPath) : null,
+        }, null, 2));
+      } catch (e) {
+        res.end(JSON.stringify({ error: e.message }));
+      }
+      return;
+    }
+
     // Bulletproof static asset serving for /_next/static/
     if (pathname && pathname.startsWith('/_next/static/')) {
       const subPath = pathname.replace('/_next/static/', '');

@@ -1,12 +1,12 @@
 self.__BUILD_MANIFEST = {
   "/": [
-    "static/chunks/02uqlj_nty5mc.js"
+    "static/chunks/2hfrnqq2vs5--.js"
   ],
   "/_error": [
     "static/chunks/3y7_xdsr7fb40.js"
   ],
   "/about": [
-    "static/chunks/13i_t6voznp18.js"
+    "static/chunks/1y6jr-aiji4q0.js"
   ],
   "/blog": [
     "static/chunks/20_bc55qoq-4-.js"
@@ -15,13 +15,13 @@ self.__BUILD_MANIFEST = {
     "static/chunks/30re1j1hvnju6.js"
   ],
   "/gallery": [
-    "static/chunks/2pqb5dl8gj0pv.js"
+    "static/chunks/3bg3p911zabwj.js"
   ],
   "/testimonials": [
-    "static/chunks/066p71l1tiuqv.js"
+    "static/chunks/3-ffqoi_44-nj.js"
   ],
   "/treatments": [
-    "static/chunks/1narldc8tv97p.js"
+    "static/chunks/1hyhb5a9cyl6f.js"
   ],
   "__rewrites": {
     "afterFiles": [],

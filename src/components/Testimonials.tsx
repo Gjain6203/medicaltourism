@@ -3,7 +3,7 @@ import Image from "next/image";
 const testimonials = [
   {
     name: 'Idris Hawuva',
-    image: '/images/home_gallery8.png',
+    image: '/images/sonaura_gallery3.webp',
     text: 'I came from Nigeria for my father s Surgery at Apollo Hospital in India. They have top quality doctors teams and the best services at affordable cost treatment. I like to say thanks to Sonaura Global HealthCare company, really I impressed with the there top quality of services and personal care.',
   },
   {
@@ -13,12 +13,12 @@ const testimonials = [
   },
   {
     name: 'Bekashi Lew',
-    image: '/images/sonaura_gallery8.webp',
+    image: '/images/sonaura_gallery6.webp',
     text: 'I am Bekashi from Malaysia came to India for my treatment. They are the best and the services given by them are beyond my expectations. I advise you to all Choose Sonaura Global HealthCare for the treatment plans, they are the best medical tourism company in India and provide treatments at a low cost.',
   },
   {
     name: 'Peter Louis',
-    image: '/images/home_gallery6.png',
+    image: '/images/sonaura_gallery7.webp',
     text: 'I am Peter Louis working as a press reporter in South Sudan came to Jaypee Hospital for my general health check-up. I was extremely pleased to be treated by professional staff in an excellent environment at Jaypee Hospital. Offered a higher quality of care to their patients. Special thanks to the Sonaura Global HealthCare team.',
   },
 ];

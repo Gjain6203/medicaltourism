@@ -16,7 +16,7 @@ const photoItems = [
   { id: 'p5', image: '/images/sonaura_gallery5.webp' },
   { id: 'p6', image: '/images/sonaura_gallery6.webp' },
   { id: 'p7', image: '/images/sonaura_gallery7.webp' },
-  { id: 'p8', image: '/images/sonaura_gallery8.webp' },
+  // { id: 'p8', image: '/images/sonaura_gallery8.webp' },
 ];
 
 

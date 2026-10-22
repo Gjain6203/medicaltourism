@@ -8,12 +8,12 @@ const testimonials = [
   },
   {
     name: 'Ugo Baba',
-    image: '/images/home_gallery7.png',
+    image: '/images/sonaura_gallery4.webp',
     text: 'I am Ugo from Uganda and came to India for my spine surgery in India at Jaypee Hospital I m really satisfied with the high quality and Sonaura Global HealthCare services. They have a top surgeon in India. They have a very good hand in spine surgery with a higher success rate at affordable cost.',
   },
   {
     name: 'Bekashi Lew',
-    image: '/images/home_gallery9.png',
+    image: '/images/sonaura_gallery8.webp',
     text: 'I am Bekashi from Malaysia came to India for my treatment. They are the best and the services given by them are beyond my expectations. I advise you to all Choose Sonaura Global HealthCare for the treatment plans, they are the best medical tourism company in India and provide treatments at a low cost.',
   },
   {

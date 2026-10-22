@@ -7,7 +7,24 @@ const fs = require('fs');
 
 const port = process.env.PORT || 3000;
 const dev = process.env.NODE_ENV !== 'production';
-const app = next({ dev, dir: path.resolve(__dirname) });
+
+// Detect where .next directory lives
+function getNextDir() {
+  const possible = [
+    path.resolve(__dirname),
+    path.join(__dirname, 'update_production'),
+    path.join(__dirname, 'deploy_build'),
+  ];
+  for (const d of possible) {
+    if (fs.existsSync(path.join(d, '.next', 'BUILD_ID'))) {
+      return d;
+    }
+  }
+  return path.resolve(__dirname);
+}
+
+const appDir = getNextDir();
+const app = next({ dev, dir: appDir });
 const handle = app.getRequestHandler();
 
 const MIME_TYPES = {
@@ -25,21 +42,56 @@ const MIME_TYPES = {
   '.ttf': 'font/ttf',
 };
 
-// Possible locations where .next/static might have been extracted on cPanel
+// Bulletproof static resolver: looks in standard paths, subfolders, and recursive fallback
+const staticCache = new Map();
+
 function resolveStaticFile(relativePath) {
-  const possibleRoots = [
-    path.join(__dirname, '.next', 'static'),
-    path.join(__dirname, '.next', '.next', 'static'),
-    path.join(__dirname, 'next_build', '.next', 'static'),
-    path.join(__dirname, 'public', '_next', 'static'),
+  if (staticCache.has(relativePath)) {
+    return staticCache.get(relativePath);
+  }
+
+  const filename = path.basename(relativePath);
+  const candidates = [
+    path.join(__dirname, '.next', 'static', relativePath),
+    path.join(__dirname, 'public', '_next', 'static', relativePath),
+    path.join(__dirname, 'update_production', '.next', 'static', relativePath),
+    path.join(__dirname, 'update_production', 'public', '_next', 'static', relativePath),
+    path.join(__dirname, 'deploy_build', '.next', 'static', relativePath),
+    path.join(__dirname, 'next_build', '.next', 'static', relativePath),
+    path.join(__dirname, '.next', '.next', 'static', relativePath),
   ];
 
-  for (const root of possibleRoots) {
-    const candidate = path.join(root, relativePath);
-    if (fs.existsSync(candidate) && fs.statSync(candidate).isFile()) {
-      return candidate;
+  for (const c of candidates) {
+    if (fs.existsSync(c) && fs.statSync(c).isFile()) {
+      staticCache.set(relativePath, c);
+      return c;
     }
   }
+
+  // Recursive search anywhere in project for the file
+  function search(dir, depth) {
+    if (depth > 5) return null;
+    try {
+      const entries = fs.readdirSync(dir, { withFileTypes: true });
+      for (const entry of entries) {
+        if (entry.isFile() && entry.name === filename) {
+          return path.join(dir, entry.name);
+        }
+        if (entry.isDirectory() && entry.name !== 'node_modules' && !entry.name.startsWith('.git')) {
+          const found = search(path.join(dir, entry.name), depth + 1);
+          if (found) return found;
+        }
+      }
+    } catch (e) {}
+    return null;
+  }
+
+  const found = search(__dirname, 0);
+  if (found) {
+    staticCache.set(relativePath, found);
+    return found;
+  }
+
   return null;
 }
 

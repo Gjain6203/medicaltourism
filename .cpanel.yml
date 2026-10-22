@@ -2,6 +2,7 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/sonaurah/repositories/medicaltourism
-    - cd $DEPLOYPATH && npm install --omit=dev
+    - cd $DEPLOYPATH && npm install
     - cd $DEPLOYPATH && npm run build
-  # url = https://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@github.com/Gjain6203/medicaltourism.git
+    - mkdir -p $DEPLOYPATH/tmp && touch $DEPLOYPATH/tmp/restart.txt
+

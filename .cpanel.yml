@@ -1,6 +1,6 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/sonaura/repositories/medicaltourism
+    - export DEPLOYPATH=/home/sonaurah/repositories/medicaltourism
     - cd $DEPLOYPATH && npm install --omit=dev
     - cd $DEPLOYPATH && npm run build

@@ -1,5 +1,3 @@
-"use client";
-
 import { useState } from "react";
 
 const faqs = [
@@ -37,7 +35,7 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const toggleFAQ = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
+    setOpenIndex((prev) => (prev === index ? null : index));
   };
 
   return (
@@ -55,7 +53,7 @@ export default function FAQ() {
         </div>
 
         {/* Minimalist Accordion List with Original Content */}
-        <div className="divide-y divide-slate-200/90 border-y border-slate-200/90">
+        <div className="divide-y divide-slate-200 border-y border-slate-200">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
             return (
@@ -67,20 +65,23 @@ export default function FAQ() {
                   type="button"
                   onClick={() => toggleFAQ(index)}
                   className="w-full text-left font-bold text-slate-950 flex justify-between items-center gap-4 cursor-pointer select-none group"
+                  aria-expanded={isOpen}
                 >
                   <span className={`text-sm sm:text-base md:text-lg tracking-tight transition-colors ${
-                    isOpen ? "text-blue-600" : "text-slate-950 group-hover:text-blue-600"
+                    isOpen ? "text-blue-600 font-bold" : "text-slate-950 group-hover:text-blue-600"
                   }`}>
                     {faq.question}
                   </span>
                   
-                  <span className="text-xl sm:text-2xl font-light text-blue-600 flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-slate-50 group-hover:bg-blue-50 transition-colors">
+                  <span className={`text-xl sm:text-2xl font-semibold flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full transition-all duration-200 ${
+                    isOpen ? "bg-blue-600 text-white" : "bg-slate-100 text-blue-600 group-hover:bg-blue-50"
+                  }`}>
                     {isOpen ? "−" : "+"}
                   </span>
                 </button>
 
                 {isOpen && (
-                  <div className="pt-3.5 pr-8 text-slate-600 leading-relaxed text-xs sm:text-sm md:text-base animate-in fade-in duration-200">
+                  <div className="pt-3.5 pr-4 sm:pr-8 text-slate-600 leading-relaxed text-xs sm:text-sm md:text-base animate-in fade-in duration-200">
                     <p className="font-normal">{faq.answer}</p>
                   </div>
                 )}
@@ -93,8 +94,3 @@ export default function FAQ() {
     </section>
   );
 }
-
-
-
-
-

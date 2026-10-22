@@ -12,6 +12,7 @@
 .env.local
 .env.production
 .env*.local
+*.zip
 
 # misc
 .DS_Store

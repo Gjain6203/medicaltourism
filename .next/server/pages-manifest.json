@@ -5,7 +5,6 @@
   "/_error": "pages/_error.js",
   "/about": "pages/about.html",
   "/api/contact": "pages/api/contact.js",
-  "/api/diag": "pages/api/diag.js",
   "/api/hello": "pages/api/hello.js",
   "/blog": "pages/blog.html",
   "/contact": "pages/contact.html",

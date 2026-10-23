@@ -42,12 +42,6 @@
       "namedRegex": "^/api/contact(?:/)?$"
     },
     {
-      "page": "/api/diag",
-      "regex": "^/api/diag(?:/)?$",
-      "routeKeys": {},
-      "namedRegex": "^/api/diag(?:/)?$"
-    },
-    {
       "page": "/api/hello",
       "regex": "^/api/hello(?:/)?$",
       "routeKeys": {},

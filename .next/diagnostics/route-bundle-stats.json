@@ -117,16 +117,6 @@
     ]
   },
   {
-    "route": "/api/diag",
-    "firstLoadUncompressedJsBytes": 335502,
-    "firstLoadChunkPaths": [
-      ".next\\static\\chunks\\4477amg6yiskx.js",
-      ".next\\static\\chunks\\3b4ouqtcua8k4.js",
-      ".next\\static\\chunks\\2a5ju6eb8_eqs.js",
-      ".next\\static\\chunks\\turbopack-3fyumjkmj9tt2.js"
-    ]
-  },
-  {
     "route": "/api/hello",
     "firstLoadUncompressedJsBytes": 335502,
     "firstLoadChunkPaths": [

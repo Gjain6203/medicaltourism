@@ -34,7 +34,6 @@ self.__BUILD_MANIFEST = {
     "/_error",
     "/about",
     "/api/contact",
-    "/api/diag",
     "/api/hello",
     "/blog",
     "/contact",

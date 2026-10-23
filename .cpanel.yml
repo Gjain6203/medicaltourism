@@ -2,6 +2,7 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/sonaurah/repositories/medicaltourism
-    - cd $DEPLOYPATH && npm install --omit=dev
+    - cd $DEPLOYPATH && npm install
+    - cd $DEPLOYPATH && npm run build
     - mkdir -p $DEPLOYPATH/tmp && touch $DEPLOYPATH/tmp/restart.txt
 

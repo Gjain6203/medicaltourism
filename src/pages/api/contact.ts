@@ -121,11 +121,13 @@ export default async function handler(
     const host = (req.headers.host || process.env.NEXT_PUBLIC_SITE_URL || '').toString().replace(/^https?:\/\//, '');
     const siteDomain = host ? `${proto}://${host}` : (process.env.NEXT_PUBLIC_SITE_URL || 'https://sonaurahealthcare.com');
     const refererUrl = (req.headers.referer || req.headers.origin || siteDomain).toString();
+
     const response = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(recipient)}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
         Referer: refererUrl,
         Origin: refererUrl,
       },
@@ -141,18 +143,25 @@ export default async function handler(
       }),
     });
 
-    const data = await response.json();
+    const rawText = await response.text();
+    let data: any = {};
+    try {
+      data = JSON.parse(rawText);
+    } catch {
+      data = { message: rawText };
+    }
+
     const isSuccess = data?.success === 'true' || data?.success === true;
 
     if (isSuccess) {
       return res.status(200).json({
         success: true,
-        message: `Enquiry submitted successfully to ${recipient}!`,
+        message: `Thank you! Your enquiry has been sent to ${recipient}. Our team will contact you shortly.`,
       });
-    } else if (data?.message && data.message.includes('Activation')) {
+    } else if (data?.message && (data.message.includes('Activation') || data.message.includes('actived') || data.message.includes('activate'))) {
       return res.status(200).json({
         success: true,
-        message: `Form Activation link sent to ${recipient}! Please check Gmail inbox (or Spam) and click 'Activate Form' once.`,
+        message: `Form Activation link sent to ${recipient}! Please check your Gmail inbox (or Spam) and click 'Activate Form' once to start receiving leads directly.`,
       });
     } else {
       return res.status(500).json({

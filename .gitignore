@@ -3,8 +3,9 @@
 # dependencies
 /node_modules
 
-# next.js build output
-/.next
+# next.js build output (track production build, ignore heavy cache)
+.next/cache/
+.next/dev/
 /out
 /build
 

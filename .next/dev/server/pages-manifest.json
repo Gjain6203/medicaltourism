@@ -1,9 +1,0 @@
-{
-  "/": "pages/index.js",
-  "/_app": "pages/_app.js",
-  "/_document": "pages/_document.js",
-  "/about": "pages/about.js",
-  "/gallery": "pages/gallery.js",
-  "/testimonials": "pages/testimonials.js",
-  "/treatments": "pages/treatments.js"
-}

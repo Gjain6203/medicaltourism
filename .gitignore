@@ -3,8 +3,9 @@
 # dependencies
 /node_modules
 
-# next.js build cache (temporary cache ignored, production build tracked)
+# next.js build cache (temporary cache and dev files ignored, production build tracked)
 .next/cache
+.next/dev
 /out
 /build
 

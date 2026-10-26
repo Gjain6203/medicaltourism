@@ -33,41 +33,60 @@ export default function Contact() {
       let isSuccess = false;
       let responseMsg = '';
 
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (res.status === 404) {
-        // Fallback for static cPanel deployment without Node.js runtime
-        const fallbackRes = await fetch('https://formsubmit.co/ajax/sonaurahealth@gmail.com', {
+      // Primary attempt: Try local backend API endpoint
+      try {
+        const res = await fetch('/api/contact', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            Accept: 'application/json',
           },
-          body: JSON.stringify({
-            _subject: `🏥 New Patient Enquiry: ${formData.name} - Sonaura HealthCare`,
-            Name: formData.name,
-            Email: formData.email,
-            'Phone/WhatsApp': formData.phone,
-            Country: formData.country || 'Not specified',
-            Treatment: formData.treatment || 'General Inquiry',
-            Message: formData.message || 'No description provided',
-            _template: 'table',
-          }),
+          body: JSON.stringify(formData),
         });
 
-        const fallbackData = await fallbackRes.json();
-        isSuccess = fallbackData?.success === 'true' || fallbackData?.success === true;
-        responseMsg = fallbackData?.message || '';
-      } else {
-        const data = await res.json();
-        isSuccess = res.ok && data.success;
-        responseMsg = data?.message || '';
+        if (res.ok) {
+          const contentType = res.headers.get('content-type') || '';
+          if (contentType.includes('application/json')) {
+            const data = await res.json();
+            if (data && data.success) {
+              isSuccess = true;
+              responseMsg = data.message || '';
+            }
+          }
+        }
+      } catch (apiErr) {
+        // Backend API unreachable, proceed to fallback
+        console.warn('Backend API unavailable, falling back to direct email gateway:', apiErr);
+      }
+
+      // Fallback gateway: Direct submission to ensure lead is never lost
+      if (!isSuccess) {
+        try {
+          const fallbackRes = await fetch('https://formsubmit.co/ajax/sonaurahealth@gmail.com', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Accept: 'application/json',
+            },
+            body: JSON.stringify({
+              _subject: `🏥 New Patient Enquiry: ${formData.name} - Sonaura HealthCare`,
+              Name: formData.name,
+              Email: formData.email,
+              'Phone/WhatsApp': formData.phone,
+              Country: formData.country || 'Not specified',
+              Treatment: formData.treatment || 'General Inquiry',
+              Message: formData.message || 'No description provided',
+              _template: 'table',
+            }),
+          });
+
+          if (fallbackRes.ok) {
+            const fallbackData = await fallbackRes.json();
+            isSuccess = fallbackData?.success === 'true' || fallbackData?.success === true;
+            responseMsg = fallbackData?.message || '';
+          }
+        } catch (fallbackErr) {
+          console.error('Fallback submission failed:', fallbackErr);
+        }
       }
 
       if (isSuccess) {
@@ -81,10 +100,15 @@ export default function Contact() {
           message: ''
         });
       } else {
-        setErrorMessage(responseMsg || 'Kuch problem aayi, kripya dobara koshish karein.');
+        setErrorMessage(
+          responseMsg ||
+          'Something went wrong while sending your inquiry. Please try again or reach us directly on WhatsApp.'
+        );
       }
     } catch (err: any) {
-      setErrorMessage('Server se connect nahi ho paya. Kripya thodi der baad prayas karein.');
+      setErrorMessage(
+        'Unable to connect to the server. Please check your internet connection or try again shortly.'
+      );
     } finally {
       setIsSubmitting(false);
     }

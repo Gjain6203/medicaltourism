@@ -1,18 +1,20 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
+node_modules/
+package-lock.json
 
-# next.js build output (track production build, ignore heavy cache)
-.next/cache/
-.next/dev/
+# next.js build output
+.next/
 /out
 /build
 
-# env files — sensitive passwords GitHub pe nahi jayenge
-.env.local
-.env.production
-.env*.local
+# env files — sensitive credentials GitHub pe nahi jayenge
+.env*
+*.env
+!.env.example
+
+# archives & bundles
 *.zip
 
 # misc

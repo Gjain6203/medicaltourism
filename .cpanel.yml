@@ -3,10 +3,8 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home/sonaurah/repositories/medicaltourism
     - /bin/cp -R * $DEPLOYPATH
-    - /bin/cp -R .next $DEPLOYPATH/
+    - if [ -d .next ]; then /bin/cp -R .next $DEPLOYPATH/; fi
     - mkdir -p /home/sonaurah/public_html/_next
-    - /bin/cp -R .next/static /home/sonaurah/public_html/_next/
+    - if [ -d .next/static ]; then /bin/cp -R .next/static /home/sonaurah/public_html/_next/; fi
     - /bin/cp -R public/* /home/sonaurah/public_html/
     - mkdir -p $DEPLOYPATH/tmp && touch $DEPLOYPATH/tmp/restart.txt
-
-

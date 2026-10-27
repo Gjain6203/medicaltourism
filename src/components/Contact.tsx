@@ -82,7 +82,9 @@ export default function Contact() {
           if (fallbackRes.ok) {
             const fallbackData = await fallbackRes.json();
             isSuccess = fallbackData?.success === 'true' || fallbackData?.success === true;
-            responseMsg = fallbackData?.message || '';
+            if (!isSuccess && fallbackData?.message && !fallbackData.message.toLowerCase().includes('activation')) {
+              responseMsg = fallbackData.message;
+            }
           }
         } catch (fallbackErr) {
           console.error('Fallback submission failed:', fallbackErr);

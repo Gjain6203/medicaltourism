@@ -1,41 +1,55 @@
 <?php
-// One-time setup: Permanently symlinks public_html/_next to the git repository's .next directory
+// Instant sync & restart: Copies latest static assets directly into public_html and restarts Passenger
 header('Content-Type: text/html; charset=utf-8');
 
-$repoNext = '/home/sonaurah/repositories/medicaltourism/.next';
+$repoDir = '/home/sonaurah/repositories/medicaltourism';
+$repoStatic = $repoDir . '/.next/static';
 $publicNext = '/home/sonaurah/public_html/_next';
+$publicStatic = $publicNext . '/static';
 
-echo "<h2>Setting up permanent Next.js symlink on cPanel...</h2>";
+echo "<h2>Syncing Next.js Assets & Restarting Server...</h2>";
 
-if (!file_exists($repoNext)) {
-    echo "<p style='color:red;'>Error: Repository .next folder not found at: $repoNext</p>";
+if (!file_exists($repoStatic)) {
+    echo "<p style='color:red;'>Error: Repository static folder not found at: $repoStatic</p>";
     exit;
 }
 
-// If it's already a symlink, remove it to refresh
-if (is_link($publicNext)) {
-    unlink($publicNext);
-    echo "<p>Existing symlink removed.</p>";
-} elseif (is_dir($publicNext)) {
-    // If it's a real directory, rename it as backup
-    $backup = $publicNext . '_old_' . time();
-    rename($publicNext, $backup);
-    echo "<p>Existing static directory backed up to: $backup</p>";
+if (!file_exists($publicNext)) {
+    mkdir($publicNext, 0755, true);
 }
 
-// Create symlink
-if (@symlink($repoNext, $publicNext)) {
-    echo "<p style='color:green; font-weight:bold; font-size:18px;'>✓ SUCCESS! Permanent symlink created successfully.</p>";
-    echo "<p><code>/home/sonaurah/public_html/_next</code> &rarr; <code>$repoNext</code></p>";
-    echo "<p>From now on, every Git push will automatically update all CSS, JS, and build files on the live site without any manual uploads!</p>";
-} else {
-    // Fallback if symlink is disabled on PHP: copy the latest static folder directly
-    echo "<p style='color:orange;'>Symlink not permitted by hosting policy. Performing deep sync copy fallback...</p>";
-    exec("cp -r $repoNext/static $publicNext/static 2>&1", $out, $ret);
-    if ($ret === 0) {
-        echo "<p style='color:green;'>✓ Successfully copied latest static assets!</p>";
-    } else {
-        echo "<p style='color:red;'>Copy failed: " . implode("<br>", $out) . "</p>";
+// Deep copy helper
+function copyDir($src, $dst) {
+    $dir = opendir($src);
+    @mkdir($dst, 0755, true);
+    $count = 0;
+    while (($file = readdir($dir)) !== false) {
+        if ($file != '.' && $file != '..') {
+            if (is_dir($src . '/' . $file)) {
+                $count += copyDir($src . '/' . $file, $dst . '/' . $file);
+            } else {
+                copy($src . '/' . $file, $dst . '/' . $file);
+                $count++;
+            }
+        }
     }
+    closedir($dir);
+    return $count;
 }
+
+echo "<p>Copying latest static chunks, CSS, and manifests...</p>";
+$copied = copyDir($repoStatic, $publicStatic);
+echo "<p style='color:green; font-weight:bold;'>✓ Successfully copied $copied asset files to public_html/_next/static!</p>";
+
+$buildId = trim(@file_get_contents($repoDir . '/.next/BUILD_ID'));
+echo "<p>Active Build ID: <strong>$buildId</strong></p>";
+
+// Trigger Node.js Passenger restart
+$tmpDir = $repoDir . '/tmp';
+@mkdir($tmpDir, 0755, true);
+$restartFile = $tmpDir . '/restart.txt';
+@touch($restartFile);
+echo "<p style='color:green; font-weight:bold; font-size:18px;'>✓ Passenger Restart Triggered via $restartFile!</p>";
+
+echo "<p style='color:blue;'>Now refresh <a href='/' target='_blank'>sonaurahealthcare.com</a> with Ctrl+Shift+R and test your contact form!</p>";
 ?>

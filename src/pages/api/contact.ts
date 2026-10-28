@@ -1,7 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { spawn } from 'child_process';
 import tls from 'tls';
-import fs from 'fs';
 
 type ResponseData = {
   success: boolean;
@@ -19,20 +18,10 @@ const SMTP_PASS = process.env.SMTP_PASS || 'nb2136tit29knwfj';
 function sendViaSendmail(rawEmail: string): Promise<boolean> {
   return new Promise((resolve) => {
     try {
-      const candidates = ['/usr/sbin/sendmail', '/usr/lib/sendmail'];
-      let binaryPath = '';
-      for (const p of candidates) {
-        if (fs.existsSync(p)) {
-          binaryPath = p;
-          break;
-        }
-      }
-
-      if (!binaryPath) {
+      if (process.platform !== 'linux') {
         return resolve(false);
       }
-
-      const proc = spawn(binaryPath, ['-t', '-i']);
+      const proc = spawn('/usr/sbin/sendmail', ['-t', '-i']);
       let hasError = false;
 
       proc.on('error', () => {
@@ -49,11 +38,7 @@ function sendViaSendmail(rawEmail: string): Promise<boolean> {
       proc.stdin.end();
 
       proc.on('close', (code) => {
-        if (!hasError) {
-          resolve(code === 0);
-        } else {
-          resolve(false);
-        }
+        resolve(!hasError && code === 0);
       });
     } catch {
       resolve(false);
@@ -277,7 +262,7 @@ export default async function handler(
     let delivered = false;
 
     // Method 1: Local cPanel/Linux sendmail (fastest & most reliable on cPanel, zero dependencies)
-    if (process.platform === 'linux' || fs.existsSync('/usr/sbin/sendmail')) {
+    if (process.platform === 'linux') {
       delivered = await sendViaSendmail(rawEmail);
       if (delivered) {
         console.log('Delivered successfully via local sendmail binary');

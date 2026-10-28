@@ -44,6 +44,12 @@ echo "<p style='color:green; font-weight:bold;'>✓ Successfully copied $copied 
 $buildId = trim(@file_get_contents($repoDir . '/.next/BUILD_ID'));
 echo "<p>Active Build ID: <strong>$buildId</strong></p>";
 
+// Copy direct PHP contact API to public_html root
+if (file_exists($repoDir . '/public/api-contact.php')) {
+    @copy($repoDir . '/public/api-contact.php', '/home/sonaurah/public_html/api-contact.php');
+    echo "<p style='color:green; font-weight:bold;'>✓ Direct PHP Contact API synced to public_html/api-contact.php</p>";
+}
+
 // Trigger Node.js Passenger restart
 $tmpDir = $repoDir . '/tmp';
 @mkdir($tmpDir, 0755, true);

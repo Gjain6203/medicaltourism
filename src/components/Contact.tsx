@@ -58,36 +58,27 @@ export default function Contact() {
         console.warn('Backend API unavailable, falling back to direct email gateway:', apiErr);
       }
 
-      // Fallback gateway: Direct submission to ensure lead is never lost
+      // Fallback gateway: Direct native PHP mailer in public_html
       if (!isSuccess) {
         try {
-          const fallbackRes = await fetch('https://formsubmit.co/ajax/sonaurahealth@gmail.com', {
+          const fallbackRes = await fetch('/api-contact.php', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
               Accept: 'application/json',
             },
-            body: JSON.stringify({
-              _subject: `🏥 New Patient Enquiry: ${formData.name} - Sonaura HealthCare`,
-              Name: formData.name,
-              Email: formData.email,
-              'Phone/WhatsApp': formData.phone,
-              Country: formData.country || 'Not specified',
-              Treatment: formData.treatment || 'General Inquiry',
-              Message: formData.message || 'No description provided',
-              _template: 'table',
-            }),
+            body: JSON.stringify(formData),
           });
 
           if (fallbackRes.ok) {
             const fallbackData = await fallbackRes.json();
-            isSuccess = fallbackData?.success === 'true' || fallbackData?.success === true;
-            if (!isSuccess && fallbackData?.message && !fallbackData.message.toLowerCase().includes('activation')) {
-              responseMsg = fallbackData.message;
+            if (fallbackData && fallbackData.success) {
+              isSuccess = true;
+              responseMsg = fallbackData.message || '';
             }
           }
         } catch (fallbackErr) {
-          console.error('Fallback submission failed:', fallbackErr);
+          console.error('Direct PHP fallback submission failed:', fallbackErr);
         }
       }
 

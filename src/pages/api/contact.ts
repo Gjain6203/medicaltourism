@@ -8,7 +8,7 @@ type ResponseData = {
 };
 
 const DEFAULT_RECIPIENT = 'sonaurahealth@gmail.com';
-const SMTP_HOST = process.env.SMTP_HOST || 'nsrv.hostdserver.com';
+const SMTP_HOST = process.env.SMTP_HOST || 'sonaurahealthcare.com';
 const SMTP_PORT = parseInt(process.env.SMTP_PORT || '465', 10);
 const SMTP_USER = process.env.SMTP_USER || 'info@sonaurahealthcare.com';
 const SMTP_PASS = process.env.SMTP_PASS || 'nb2136tit29knwfj';

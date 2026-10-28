@@ -43,7 +43,7 @@ if (empty($name) || empty($email) || empty($phone)) {
 $to = 'sonaurahealth@gmail.com';
 $smtpUser = 'info@sonaurahealthcare.com';
 $smtpPass = 'nb2136tit29knwfj';
-$smtpHost = 'ssl://nsrv.hostdserver.com';
+$smtpHost = 'ssl://sonaurahealthcare.com';
 $smtpPort = 465;
 
 $subject = "🏥 New Patient Inquiry: " . $name . " - Sonaura HealthCare";

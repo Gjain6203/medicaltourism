@@ -1,5 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import nodemailer from 'nodemailer';
+import { spawn } from 'child_process';
+import tls from 'tls';
+import fs from 'fs';
 
 type ResponseData = {
   success: boolean;
@@ -12,6 +14,169 @@ const SMTP_HOST = process.env.SMTP_HOST || 'sonaurahealthcare.com';
 const SMTP_PORT = parseInt(process.env.SMTP_PORT || '465', 10);
 const SMTP_USER = process.env.SMTP_USER || 'info@sonaurahealthcare.com';
 const SMTP_PASS = process.env.SMTP_PASS || 'nb2136tit29knwfj';
+
+// 1. Direct local sendmail binary (/usr/sbin/sendmail on Linux/cPanel)
+function sendViaSendmail(rawEmail: string): Promise<boolean> {
+  return new Promise((resolve) => {
+    try {
+      const candidates = ['/usr/sbin/sendmail', '/usr/lib/sendmail'];
+      let binaryPath = '';
+      for (const p of candidates) {
+        if (fs.existsSync(p)) {
+          binaryPath = p;
+          break;
+        }
+      }
+
+      if (!binaryPath) {
+        return resolve(false);
+      }
+
+      const proc = spawn(binaryPath, ['-t', '-i']);
+      let hasError = false;
+
+      proc.on('error', () => {
+        hasError = true;
+        resolve(false);
+      });
+
+      proc.stdin.on('error', () => {
+        hasError = true;
+        resolve(false);
+      });
+
+      proc.stdin.write(rawEmail);
+      proc.stdin.end();
+
+      proc.on('close', (code) => {
+        if (!hasError) {
+          resolve(code === 0);
+        } else {
+          resolve(false);
+        }
+      });
+    } catch {
+      resolve(false);
+    }
+  });
+}
+
+// 2. Zero-dependency native Node.js TLS SMTP Sender
+function sendViaTls({
+  host,
+  port,
+  user,
+  pass,
+  from,
+  to,
+  replyTo,
+  subject,
+  html,
+}: {
+  host: string;
+  port: number;
+  user: string;
+  pass: string;
+  from: string;
+  to: string;
+  replyTo?: string;
+  subject: string;
+  html: string;
+}): Promise<boolean> {
+  return new Promise((resolve, reject) => {
+    const socket = tls.connect(
+      {
+        host,
+        port,
+        rejectUnauthorized: false,
+      },
+      () => {}
+    );
+
+    socket.setEncoding('utf8');
+    let step = 0;
+    let finished = false;
+
+    const timeout = setTimeout(() => {
+      if (!finished) {
+        finished = true;
+        socket.destroy();
+        reject(new Error(`SMTP connection timed out on ${host}`));
+      }
+    }, 6000);
+
+    socket.on('data', (data: string) => {
+      if (finished) return;
+      const code = parseInt(data.substring(0, 3), 10);
+
+      try {
+        if (step === 0 && code === 220) {
+          step++;
+          socket.write('EHLO sonaurahealthcare.com\r\n');
+        } else if (step === 1 && code === 250) {
+          step++;
+          socket.write('AUTH LOGIN\r\n');
+        } else if (step === 2 && code === 334) {
+          step++;
+          socket.write(Buffer.from(user).toString('base64') + '\r\n');
+        } else if (step === 3 && code === 334) {
+          step++;
+          socket.write(Buffer.from(pass).toString('base64') + '\r\n');
+        } else if (step === 4 && code === 235) {
+          step++;
+          socket.write(`MAIL FROM:<${user}>\r\n`);
+        } else if (step === 5 && code === 250) {
+          step++;
+          socket.write(`RCPT TO:<${to}>\r\n`);
+        } else if (step === 6 && code === 250) {
+          step++;
+          socket.write('DATA\r\n');
+        } else if (step === 7 && code === 354) {
+          step++;
+          const headers = [
+            `From: "Sonaura HealthCare Portal" <${from}>`,
+            `To: <${to}>`,
+            ...(replyTo ? [`Reply-To: <${replyTo}>`] : []),
+            `Subject: =?UTF-8?B?${Buffer.from(subject).toString('base64')}?=`,
+            'MIME-Version: 1.0',
+            'Content-Type: text/html; charset=UTF-8',
+            `Date: ${new Date().toUTCString()}`,
+            '',
+            html,
+            '.',
+            '',
+          ].join('\r\n');
+          socket.write(headers);
+        } else if (step === 8 && code === 250) {
+          step++;
+          finished = true;
+          clearTimeout(timeout);
+          socket.write('QUIT\r\n');
+          socket.end();
+          resolve(true);
+        } else if (code >= 400) {
+          finished = true;
+          clearTimeout(timeout);
+          socket.destroy();
+          reject(new Error(`SMTP error (${code}) on ${host}: ${data.trim()}`));
+        }
+      } catch (err) {
+        finished = true;
+        clearTimeout(timeout);
+        socket.destroy();
+        reject(err);
+      }
+    });
+
+    socket.on('error', (err) => {
+      if (!finished) {
+        finished = true;
+        clearTimeout(timeout);
+        reject(err);
+      }
+    });
+  });
+}
 
 export default async function handler(
   req: NextApiRequest,
@@ -96,52 +261,63 @@ export default async function handler(
       </div>
     `;
 
-    const hostCandidates = Array.from(new Set([
-      SMTP_HOST,
-      'localhost',
-      '127.0.0.1',
-      'mail.sonaurahealthcare.com',
-      'nsrv.hostdserver.com',
-    ]));
+    const rawEmail = [
+      `To: <${recipient}>`,
+      `From: "Sonaura HealthCare Portal" <${SMTP_USER}>`,
+      `Reply-To: <${email}>`,
+      `Subject: =?UTF-8?B?${Buffer.from(`🏥 New Patient Enquiry: ${name} (${treatment || 'Consultation'})`).toString('base64')}?=`,
+      'MIME-Version: 1.0',
+      'Content-Type: text/html; charset=UTF-8',
+      `Date: ${new Date().toUTCString()}`,
+      '',
+      htmlContent,
+      '',
+    ].join('\r\n');
 
-    let lastError: any = null;
-    let sent = false;
+    let delivered = false;
 
-    for (const host of hostCandidates) {
-      try {
-        const transporter = nodemailer.createTransport({
-          host,
-          port: SMTP_PORT,
-          secure: SMTP_PORT === 465,
-          auth: {
-            user: SMTP_USER,
-            pass: SMTP_PASS,
-          },
-          tls: {
-            rejectUnauthorized: false,
-          },
-          connectionTimeout: 5000,
-          greetingTimeout: 5000,
-        });
-
-        await transporter.sendMail({
-          from: `"Sonaura HealthCare Portal" <${SMTP_USER}>`,
-          to: recipient,
-          replyTo: email,
-          subject: `🏥 New Patient Enquiry: ${name} (${treatment || 'Consultation'})`,
-          html: htmlContent,
-        });
-
-        sent = true;
-        break;
-      } catch (err: any) {
-        lastError = err;
-        console.warn(`Failed sending via host ${host}:`, err?.message || err);
+    // Method 1: Local cPanel/Linux sendmail (fastest & most reliable on cPanel, zero dependencies)
+    if (process.platform === 'linux' || fs.existsSync('/usr/sbin/sendmail')) {
+      delivered = await sendViaSendmail(rawEmail);
+      if (delivered) {
+        console.log('Delivered successfully via local sendmail binary');
       }
     }
 
-    if (!sent) {
-      throw lastError || new Error('All SMTP servers failed to connect');
+    // Method 2: Pure Native TLS SMTP socket fallback across candidates
+    if (!delivered) {
+      const candidates = Array.from(new Set([
+        'localhost',
+        '127.0.0.1',
+        SMTP_HOST,
+        'sonaurahealthcare.com',
+        'nsrv.hostdserver.com',
+      ]));
+
+      for (const host of candidates) {
+        try {
+          await sendViaTls({
+            host,
+            port: SMTP_PORT,
+            user: SMTP_USER,
+            pass: SMTP_PASS,
+            from: SMTP_USER,
+            to: recipient,
+            replyTo: email,
+            subject: `🏥 New Patient Enquiry: ${name} (${treatment || 'Consultation'})`,
+            html: htmlContent,
+          });
+          delivered = true;
+          console.log(`Delivered successfully via TLS host ${host}`);
+          break;
+        } catch (smtpErr) {
+          console.warn(`TLS host ${host} failed:`, smtpErr);
+        }
+      }
+    }
+
+    if (!delivered) {
+      throw new Error('Unable to deliver message through local sendmail or TLS gateways.');
     }
 
     return res.status(200).json({

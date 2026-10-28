@@ -50,6 +50,8 @@ export default function Contact() {
             if (data && data.success) {
               isSuccess = true;
               responseMsg = data.message || '';
+            } else if (data) {
+              responseMsg = data.error || data.message || '';
             }
           }
         }

@@ -9,7 +9,7 @@ type ResponseData = {
 };
 
 const DEFAULT_RECIPIENT = 'sonaurahealth@gmail.com';
-const SMTP_HOST = process.env.SMTP_HOST || 'sonaurahealthcare.com';
+const SMTP_HOST = process.env.SMTP_HOST || 'nsrv.hostdserver.com';
 const SMTP_PORT = parseInt(process.env.SMTP_PORT || '465', 10);
 const SMTP_USER = process.env.SMTP_USER || 'info@sonaurahealthcare.com';
 const SMTP_PASS = process.env.SMTP_PASS || 'nb2136tit29knwfj';
@@ -46,7 +46,7 @@ function sendViaSendmail(rawEmail: string): Promise<boolean> {
   });
 }
 
-// 2. Zero-dependency native Node.js TLS SMTP Sender
+// 2. Zero-dependency native Node.js TLS SMTP Sender (Exim / cPanel Compatible)
 function sendViaTls({
   host,
   port,
@@ -73,12 +73,14 @@ function sendViaTls({
       {
         host,
         port,
+        servername: host,
         rejectUnauthorized: false,
       },
       () => {}
     );
 
     socket.setEncoding('utf8');
+    let buffer = '';
     let step = 0;
     let finished = false;
 
@@ -88,36 +90,48 @@ function sendViaTls({
         socket.destroy();
         reject(new Error(`SMTP connection timed out on ${host}`));
       }
-    }, 6000);
+    }, 30000);
 
-    socket.on('data', (data: string) => {
+    socket.on('data', (chunk: string) => {
       if (finished) return;
-      const code = parseInt(data.substring(0, 3), 10);
+      buffer += chunk;
+
+      const lines = buffer.split('\r\n');
+      const completeLines = lines.slice(0, -1);
+      const lastLine = completeLines[completeLines.length - 1] || '';
 
       try {
-        if (step === 0 && code === 220) {
-          step++;
+        if (step === 0 && /^220\s/.test(lastLine)) {
+          step = 1;
+          buffer = '';
           socket.write('EHLO sonaurahealthcare.com\r\n');
-        } else if (step === 1 && code === 250) {
-          step++;
+        } else if (step === 1 && /^250\s/.test(lastLine)) {
+          step = 2;
+          buffer = '';
           socket.write('AUTH LOGIN\r\n');
-        } else if (step === 2 && code === 334) {
-          step++;
+        } else if (step === 2 && /^334\s/.test(lastLine)) {
+          step = 3;
+          buffer = '';
           socket.write(Buffer.from(user).toString('base64') + '\r\n');
-        } else if (step === 3 && code === 334) {
-          step++;
+        } else if (step === 3 && /^334\s/.test(lastLine)) {
+          step = 4;
+          buffer = '';
           socket.write(Buffer.from(pass).toString('base64') + '\r\n');
-        } else if (step === 4 && code === 235) {
-          step++;
-          socket.write(`MAIL FROM:<${user}>\r\n`);
-        } else if (step === 5 && code === 250) {
-          step++;
+        } else if (step === 4 && /^235\s/.test(lastLine)) {
+          step = 5;
+          buffer = '';
+          socket.write(`MAIL FROM:<${from}>\r\n`);
+        } else if (step === 5 && /^250\s/.test(lastLine)) {
+          step = 6;
+          buffer = '';
           socket.write(`RCPT TO:<${to}>\r\n`);
-        } else if (step === 6 && code === 250) {
-          step++;
+        } else if (step === 6 && /^250\s/.test(lastLine)) {
+          step = 7;
+          buffer = '';
           socket.write('DATA\r\n');
-        } else if (step === 7 && code === 354) {
-          step++;
+        } else if (step === 7 && /^354\s/.test(lastLine)) {
+          step = 8;
+          buffer = '';
           const headers = [
             `From: "Sonaura HealthCare Portal" <${from}>`,
             `To: <${to}>`,
@@ -132,18 +146,18 @@ function sendViaTls({
             '',
           ].join('\r\n');
           socket.write(headers);
-        } else if (step === 8 && code === 250) {
-          step++;
+        } else if (step === 8 && /^250\s/.test(lastLine)) {
+          step = 9;
           finished = true;
           clearTimeout(timeout);
           socket.write('QUIT\r\n');
           socket.end();
           resolve(true);
-        } else if (code >= 400) {
+        } else if (/^[45]\d\d\s/.test(lastLine)) {
           finished = true;
           clearTimeout(timeout);
           socket.destroy();
-          reject(new Error(`SMTP error (${code}) on ${host}: ${data.trim()}`));
+          reject(new Error(`SMTP error on ${host}: ${lastLine}`));
         }
       } catch (err) {
         finished = true;
@@ -272,11 +286,11 @@ export default async function handler(
     // Method 2: Pure Native TLS SMTP socket fallback across candidates
     if (!delivered) {
       const candidates = Array.from(new Set([
+        'nsrv.hostdserver.com',
+        'cpanel.redlake.in',
+        SMTP_HOST,
         'localhost',
         '127.0.0.1',
-        SMTP_HOST,
-        'sonaurahealthcare.com',
-        'nsrv.hostdserver.com',
       ]));
 
       for (const host of candidates) {
